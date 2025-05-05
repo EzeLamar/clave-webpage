@@ -18,9 +18,9 @@ const AboutSection: React.FC = () => {
           </div>
           
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Sobre Hidrolit</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Sobre Clave Bahía</h2>
             <p className="text-gray-700 mb-6">
-              En Hidrolit nos dedicamos a proporcionar soluciones de purificación de agua de alta calidad para 
+              En Clave Bahía nos dedicamos a proporcionar soluciones de purificación de agua de alta calidad para 
               hogares y empresas. Con más de 10 años de experiencia en el mercado, nuestros productos están 
               diseñados con la más avanzada tecnología para garantizar agua limpia y saludable.
             </p>

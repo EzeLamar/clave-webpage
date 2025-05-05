@@ -1,7 +1,9 @@
-import React from 'react';
-import { Droplet, CheckCircle, Shield } from 'lucide-react';
+import React, { useState } from 'react';
+import { Droplet, CheckCircle, Shield, Volume2, VolumeX, RefreshCw } from 'lucide-react';
 
-const HeroSection: React.FC = () => {
+export const HeroSection = () => {
+  const [isVideoMuted, setIsVideoMuted] = useState(true);
+
   return (
     <section 
       id="inicio" 
@@ -50,15 +52,50 @@ const HeroSection: React.FC = () => {
           </div>
           
           <div className="order-1 md:order-2 relative">
-            <div className="relative overflow-hidden rounded-lg shadow-xl">
-              <img 
-                src="https://images.pexels.com/photos/6973895/pexels-photo-6973895.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                alt="Purificador Hidrolit" 
+            <div className="relative overflow-hidden rounded-lg shadow-xl" onClick={() => setIsVideoMuted(!isVideoMuted)}>
+              <button
+                className="absolute top-4 right-4 z-10 p-2 bg-black/30 hover:bg-black/50 rounded-full transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsVideoMuted(!isVideoMuted);
+                }}
+                aria-label={isVideoMuted ? "Unmute video" : "Mute video"}
+              >
+                {isVideoMuted ? (
+                  <VolumeX className="w-5 h-5 text-white" />
+                ) : (
+                  <Volume2 className="w-5 h-5 text-white" />
+                )}
+                </button>
+              <button
+                className="absolute bottom-4 right-4 z-10 p-2 bg-black/30 hover:bg-black/50 rounded-full transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const video = e.currentTarget.parentElement?.querySelector('video');
+                  if (video) {
+                    video.currentTime = 0;
+                  }
+                }}
+                aria-label="Restart video"
+              >
+                <RefreshCw className="w-5 h-5 text-white" />
+              </button>
+              <video 
+                autoPlay 
+                loop 
+                muted={isVideoMuted} 
+                playsInline
                 className="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105"
-              />
+              >
+                <source 
+                  src="https://clavebahia.com.ar/wp-content/uploads/2020/04/purificador-de-agua-hidrolit-para-cloro-plomo-hidrolit.mp4" 
+                  type="video/mp4" 
+                />
+                Su navegador no soporta el elemento de video.
+              </video>
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70"></div>
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <p className="text-lg font-medium">Agua cristalina, vida saludable</p>
+                <p className="text-lg font-medium">Tecnología Hidrolit Clorineoff</p>
               </div>
             </div>
             <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-blue-100 rounded-full -z-10"></div>

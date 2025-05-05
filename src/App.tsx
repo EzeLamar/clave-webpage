@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 
 function App() {
   useEffect(() => {
-    document.title = 'Hidrolit | Purificadores de Agua';
+    document.title = 'Clave | Purificadores de Agua';
   }, []);
 
   return (

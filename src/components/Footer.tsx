@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex items-center mb-5">
               <Droplets className="h-8 w-8 text-blue-400" />
-              <span className="ml-2 text-xl font-bold text-white">Hidrolit</span>
+              <span className="ml-2 text-xl font-bold text-white">Clave Bahía</span>
             </div>
             <p className="text-gray-400 mb-6">
               Mejorando la calidad del agua y la vida de nuestros clientes con la más 

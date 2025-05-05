@@ -24,7 +24,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="p-5">
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-xl font-semibold text-gray-800">{product.name}</h3>
-          <div className="text-xl font-bold text-blue-700">{product.price}</div>
+          {/* <div className="text-xl font-bold text-blue-700">{product.price}</div> */}
         </div>
         
         <p className="text-gray-600 mb-4">{product.description}</p>
