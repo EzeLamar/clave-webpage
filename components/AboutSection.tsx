@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react';
+import Image from 'next/image';
 import { Award, Shield, Clock, ThumbsUp } from 'lucide-react';
 
 const AboutSection: React.FC = () => {
@@ -10,9 +11,11 @@ const AboutSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>
             <div className="relative">
-              <img
+              <Image
                 src="https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt="Equipo Hidrolit"
+                width={1260}
+                height={750}
                 className="rounded-lg shadow-lg w-full"
               />
               <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-blue-100 rounded-full -z-10"></div>

@@ -1,7 +1,6 @@
-'use client'
-
 import React from 'react';
-import { Droplets, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Droplets } from 'lucide-react';
+import { siFacebook, siInstagram, siX } from 'simple-icons';
 
 const Footer: React.FC = () => {
   return (
@@ -19,13 +18,19 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook className="h-5 w-5" />
+                <svg role="img" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d={siFacebook.path} />
+                </svg>
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Instagram className="h-5 w-5" />
+                <svg role="img" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d={siInstagram.path} />
+                </svg>
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="h-5 w-5" />
+                <svg role="img" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d={siX.path} />
+                </svg>
               </a>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Check } from 'lucide-react';
+import Image from 'next/image';
 import ContactButton from './ContactButton';
 import { ProductType } from '@/types';
 
@@ -13,10 +14,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg">
       <div className="relative overflow-hidden h-48 sm:h-64">
-        <img
+        <Image
           src={product.imageUrl}
           alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+          fill
+          className="object-cover transition-transform duration-700 hover:scale-110"
         />
         <div className="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 text-xs rounded-md">
           {product.category}
