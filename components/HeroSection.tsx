@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Droplet, CheckCircle, Shield, Volume2, VolumeX, RefreshCw } from 'lucide-react';
 
@@ -66,7 +68,7 @@ export const HeroSection = () => {
                 ) : (
                   <Volume2 className="w-5 h-5 text-white" />
                 )}
-                </button>
+              </button>
               <button
                 className="absolute bottom-4 right-4 z-10 p-2 bg-black/30 hover:bg-black/50 rounded-full transition-colors"
                 onClick={(e) => {

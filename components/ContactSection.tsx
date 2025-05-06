@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import { Phone, Mail, MapPin, MessageSquare } from 'lucide-react';
 

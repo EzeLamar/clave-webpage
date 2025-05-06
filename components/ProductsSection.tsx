@@ -1,6 +1,8 @@
+'use client'
+
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
-import { ProductType } from '../types';
+import { ProductType } from '@/types';
 
 export const ProductsSection = () => {
   const products: ProductType[] = [

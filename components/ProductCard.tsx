@@ -1,7 +1,9 @@
+'use client'
+
 import React from 'react';
 import { Check } from 'lucide-react';
 import ContactButton from './ContactButton';
-import { ProductType } from '../types';
+import { ProductType } from '@/types';
 
 interface ProductCardProps {
   product: ProductType;

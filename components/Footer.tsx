@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import { Droplets, Facebook, Instagram, Twitter } from 'lucide-react';
 

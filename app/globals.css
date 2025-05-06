@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --font-family-sans: 'Inter', 'system-ui', 'sans-serif';
+  --font-family-heading: 'Poppins', 'system-ui', 'sans-serif';
+
+  --color-blue-50: #f0f5ff;
+  --color-blue-100: #e0eaff;
+  --color-blue-200: #c2d5ff;
+  --color-blue-300: #9eb3ff;
+  --color-blue-400: #788bfd;
+  --color-blue-500: #5e66f9;
+  --color-blue-600: #4f4aed;
+  --color-blue-700: #3B82F6;
+  --color-blue-800: #1E40AF;
+  --color-blue-900: #172554;
+
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  @apply text-gray-800 font-sans;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply text-gray-800 font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out;
+  }
+}
