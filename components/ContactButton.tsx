@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import { MessageSquare } from 'lucide-react';
+import { siWhatsapp } from 'simple-icons';
 
 interface ContactButtonProps {
   productName: string;
@@ -21,10 +21,12 @@ const ContactButton: React.FC<ContactButtonProps> = ({ productName }) => {
       href={generateWhatsAppLink()}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md transition-colors duration-300"
+      className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md transition-colors duration-300"
     >
-      <MessageSquare className="w-5 h-5 mr-2" />
-      <span>Contactar por WhatsApp</span>
+      <svg role="img" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <path d={siWhatsapp.path} />
+      </svg>
+      <span>Contactar</span>
     </a>
   );
 };

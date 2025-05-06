@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react';
-import { Phone, Mail, MapPin, MessageSquare } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import { siWhatsapp } from 'simple-icons';
 
 const ContactSection: React.FC = () => {
   const generateWhatsAppLink = () => {
@@ -68,9 +69,11 @@ const ContactSection: React.FC = () => {
                 href={generateWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-md transition-all duration-300"
+                className="group w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-md transition-all duration-300"
               >
-                <MessageSquare className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+                <svg role="img" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d={siWhatsapp.path} />
+                </svg>
                 <span className="font-medium">Contactar por WhatsApp</span>
               </a>
               
