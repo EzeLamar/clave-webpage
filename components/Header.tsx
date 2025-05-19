@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Droplets } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,8 +24,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <Droplets className="h-8 w-8 text-blue-700" />
-            <span className="ml-2 text-xl font-bold text-blue-800">Clave Bahía</span>
+            <Image src="/assets/images/logo.png" alt="Clave Bahía Logo" width={100} height={100} />
           </div>
           
           <nav className="hidden md:block">
