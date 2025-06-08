@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_layout_homes",
+  "info": {
+    "displayName": "Hero"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "navLinks": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": true,
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "shared.item",
+      "repeatable": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    }
+  },
+  "config": {}
+}

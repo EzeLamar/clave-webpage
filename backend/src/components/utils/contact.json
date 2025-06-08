@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_utils_contacts",
+  "info": {
+    "displayName": "Company"
+  },
+  "options": {},
+  "attributes": {
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "address": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
