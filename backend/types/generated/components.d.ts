@@ -1,5 +1,47 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlocksAboutUs extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_about_uses';
+  info: {
+    displayName: 'About Us';
+  };
+  attributes: {
+    anchorLink: Schema.Attribute.String;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    items: Schema.Attribute.Component<'shared.item', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface BlocksHero extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_heroes';
+  info: {
+    displayName: 'Hero';
+  };
+  attributes: {
+    anchorLink: Schema.Attribute.String;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    images: Schema.Attribute.Media<'images' | 'files' | 'videos', true> &
+      Schema.Attribute.Required;
+    items: Schema.Attribute.Component<'shared.item', true>;
+    navLinks: Schema.Attribute.Component<'shared.link', true> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface BlocksProducts extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_products';
+  info: {
+    displayName: 'Products';
+  };
+  attributes: {
+    anchorLink: Schema.Attribute.String;
+    description: Schema.Attribute.RichText;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface LayoutAbout extends Struct.ComponentSchema {
   collectionName: 'components_layout_abouts';
   info: {
@@ -28,17 +70,6 @@ export interface LayoutBanner extends Struct.ComponentSchema {
   };
 }
 
-export interface LayoutContact extends Struct.ComponentSchema {
-  collectionName: 'components_layout_contacts';
-  info: {
-    displayName: 'Contact';
-  };
-  attributes: {
-    description: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
-  };
-}
-
 export interface LayoutFooter extends Struct.ComponentSchema {
   collectionName: 'components_layout_footers';
   info: {
@@ -52,22 +83,6 @@ export interface LayoutFooter extends Struct.ComponentSchema {
   };
 }
 
-export interface LayoutHome extends Struct.ComponentSchema {
-  collectionName: 'components_layout_homes';
-  info: {
-    displayName: 'Hero';
-  };
-  attributes: {
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
-    images: Schema.Attribute.Media<'images' | 'files' | 'videos', true> &
-      Schema.Attribute.Required;
-    items: Schema.Attribute.Component<'shared.item', true>;
-    navLinks: Schema.Attribute.Component<'shared.link', true> &
-      Schema.Attribute.Required;
-    title: Schema.Attribute.Text & Schema.Attribute.Required;
-  };
-}
-
 export interface LayoutNavbar extends Struct.ComponentSchema {
   collectionName: 'components_layout_navbars';
   info: {
@@ -76,17 +91,6 @@ export interface LayoutNavbar extends Struct.ComponentSchema {
   attributes: {
     logo: Schema.Attribute.Component<'shared.logo-link', false>;
     navItems: Schema.Attribute.Component<'shared.link', true>;
-  };
-}
-
-export interface LayoutProducts extends Struct.ComponentSchema {
-  collectionName: 'components_layout_products';
-  info: {
-    displayName: 'Products';
-  };
-  attributes: {
-    description: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
   };
 }
 
@@ -213,13 +217,13 @@ export interface UtilsContact extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blocks.about-us': BlocksAboutUs;
+      'blocks.hero': BlocksHero;
+      'blocks.products': BlocksProducts;
       'layout.about': LayoutAbout;
       'layout.banner': LayoutBanner;
-      'layout.contact': LayoutContact;
       'layout.footer': LayoutFooter;
-      'layout.home': LayoutHome;
       'layout.navbar': LayoutNavbar;
-      'layout.products': LayoutProducts;
       'shared.item': SharedItem;
       'shared.link': SharedLink;
       'shared.logo-link': SharedLogoLink;

@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_layout_products",
+  "collectionName": "components_blocks_products",
   "info": {
     "displayName": "Products"
   },
@@ -9,7 +9,10 @@
       "type": "string"
     },
     "description": {
-      "type": "text"
+      "type": "richtext"
+    },
+    "anchorLink": {
+      "type": "string"
     }
   },
   "config": {}

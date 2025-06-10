@@ -457,21 +457,21 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    about: Schema.Attribute.Component<'layout.about', false>;
-    contact: Schema.Attribute.Component<'layout.contact', false>;
+    blocks: Schema.Attribute.DynamicZone<
+      ['blocks.hero', 'blocks.products', 'blocks.about-us']
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    home: Schema.Attribute.Component<'layout.home', false> &
-      Schema.Attribute.Required;
+    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::landing-page.landing-page'
     > &
       Schema.Attribute.Private;
-    products: Schema.Attribute.Component<'layout.products', false>;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

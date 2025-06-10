@@ -1,17 +1,27 @@
 {
-  "collectionName": "components_layout_homes",
+  "collectionName": "components_blocks_heroes",
   "info": {
     "displayName": "Hero"
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "text",
+      "type": "string",
       "required": true
     },
     "description": {
-      "type": "text",
+      "type": "richtext",
       "required": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
     },
     "navLinks": {
       "type": "component",
@@ -24,15 +34,8 @@
       "component": "shared.item",
       "repeatable": true
     },
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ]
+    "anchorLink": {
+      "type": "string"
     }
   },
   "config": {}

@@ -11,26 +11,21 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "home": {
-      "type": "component",
-      "component": "layout.home",
-      "repeatable": false,
-      "required": true
+    "title": {
+      "type": "string",
+      "required": false
     },
-    "products": {
-      "type": "component",
-      "component": "layout.products",
-      "repeatable": false
+    "description": {
+      "type": "text",
+      "required": false
     },
-    "about": {
-      "type": "component",
-      "component": "layout.about",
-      "repeatable": false
-    },
-    "contact": {
-      "type": "component",
-      "component": "layout.contact",
-      "repeatable": false
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.hero",
+        "blocks.products",
+        "blocks.about-us"
+      ]
     }
   }
 }
