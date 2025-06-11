@@ -30,6 +30,16 @@ export interface BlocksHero extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksMarkdown extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_markdowns';
+  info: {
+    displayName: 'Markdown';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
 export interface BlocksProducts extends Struct.ComponentSchema {
   collectionName: 'components_blocks_products';
   info: {
@@ -219,6 +229,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'blocks.about-us': BlocksAboutUs;
       'blocks.hero': BlocksHero;
+      'blocks.markdown': BlocksMarkdown;
       'blocks.products': BlocksProducts;
       'layout.about': LayoutAbout;
       'layout.banner': LayoutBanner;
