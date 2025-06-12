@@ -22,6 +22,9 @@
     },
     "text": {
       "type": "text"
+    },
+    "copyright": {
+      "type": "text"
     }
   },
   "config": {}

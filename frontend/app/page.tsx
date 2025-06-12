@@ -10,20 +10,19 @@ import { Block } from '@/types/blocks';
 
 async function App() {
 
-  const data = await strapiApi.get('/api/landing-page');
-  const blocks = data.data.blocks;
+  const landingPage = await strapiApi.get('/api/landing-page');
+
+  const blocks = landingPage.data.blocks;
   console.log(blocks);
 
   return (
     <div className="overflow-x-hidden">
-      <Header />
       <main>
         {blocks.map((block: Block, index: number) => blockRenderer(block, index))}
         <ProductsSection />
         <AboutSection />
         <ContactSection />
       </main>
-      <Footer />
     </div>
   );
 }
