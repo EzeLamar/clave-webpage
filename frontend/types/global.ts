@@ -26,5 +26,8 @@ export interface FooterProps {
   navItems: LinkProps[];
   socialLinks: LogoProps[];
   copyright: string;
+  address: string;
+  phone: string;
+  email: string;
 }
 

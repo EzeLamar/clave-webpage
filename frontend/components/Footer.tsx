@@ -3,7 +3,7 @@ import { siFacebook, siInstagram, siX } from 'simple-icons';
 import { FooterProps } from '@/types';
 import { StrapiImage } from './custom/strapi-image';
 
-const Footer = ({ logo, text, navItems, socialLinks, copyright }: Readonly<FooterProps>) => {
+const Footer = ({ logo, text, navItems, socialLinks, copyright, address, phone, email }: Readonly<FooterProps>) => {
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
@@ -81,10 +81,10 @@ const Footer = ({ logo, text, navItems, socialLinks, copyright }: Readonly<Foote
           <div>
             <h3 className="text-lg font-semibold mb-5">Contacto</h3>
             <ul className="space-y-3 text-gray-400">
-              <li>Av. Principal #123</li>
+              {address && <li>{address}</li>}
               <li>Ciudad México, CP 12345</li>
-              <li>+52 (123) 456-7890</li>
-              <li>info@hidrolit.com</li>
+              {phone && <li>{phone}</li>}
+              {email && <li>{email}</li>}
             </ul>
           </div>
         </div>
