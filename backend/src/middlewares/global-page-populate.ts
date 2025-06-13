@@ -19,7 +19,10 @@ const populate = {
       "blocks.products": true,
       "blocks.about-us": {
         populate: {
-          items: true
+          items: true,
+          image: {
+            fields: ["alternativeText", "url"]
+          }
         }
       },
       "blocks.markdown": true,

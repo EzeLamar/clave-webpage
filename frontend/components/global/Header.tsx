@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { HeaderProps } from '@/types';
-import { StrapiImage } from './custom/strapi-image';
+import { StrapiImage } from '../custom/strapi-image';
 
 const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

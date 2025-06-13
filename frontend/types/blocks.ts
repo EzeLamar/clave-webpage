@@ -4,7 +4,7 @@ type ComponentType =
   | "blocks.hero"
   | "blocks.heading"
   | "blocks.card-carousel"
-
+  | "blocks.about-us"
 
 interface Base<T extends ComponentType, D extends object = Record<string, unknown>> {
   id: number;
@@ -20,6 +20,7 @@ export type Block =
   | HeroProps
   | HeadingProps
   | CardCarouselProps
+  | AboutUsProps
 
 export interface HeroProps extends Base<"blocks.hero"> {
   title: string;
@@ -47,4 +48,12 @@ export interface HeadingProps extends Base<"blocks.heading"> {
   subHeading: string;
   text?: string;
   linkId?: string;
+}
+
+export interface AboutUsProps extends Base<"blocks.about-us"> {
+  title: string;
+  description: string;
+  image: ImageProps;
+  items: ItemProps[];
+  anchorLink: string;
 }

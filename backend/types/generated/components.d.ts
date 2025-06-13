@@ -8,6 +8,7 @@ export interface BlocksAboutUs extends Struct.ComponentSchema {
   attributes: {
     anchorLink: Schema.Attribute.String;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     items: Schema.Attribute.Component<'shared.item', true>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };

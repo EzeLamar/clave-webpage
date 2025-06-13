@@ -1,23 +1,11 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Droplet, CheckCircle, Shield, Volume2, VolumeX, RefreshCw } from 'lucide-react';
+import { Volume2, VolumeX, RefreshCw } from 'lucide-react';
 import { HeroProps } from '@/types/blocks';
 import { StrapiImage } from '../custom/strapi-image';
+import Icon from '@/components/custom/icon';
 
-
-const Icon = ({ icon }: { icon: string }) => {
-  switch (icon) {
-    case "Droplet":
-      return <Droplet className="h-5 w-5 text-blue-600 mr-2" />
-    case "CheckCircle":
-      return <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
-    case "Shield":
-      return <Shield className="h-5 w-5 text-blue-600 mr-2" />
-    default:
-      return null;
-  }
-}
 
 export const Hero = ({
   title,

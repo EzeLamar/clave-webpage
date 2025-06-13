@@ -1,7 +1,7 @@
 import React from 'react';
 import { siFacebook, siInstagram, siX } from 'simple-icons';
 import { FooterProps } from '@/types';
-import { StrapiImage } from './custom/strapi-image';
+import { StrapiImage } from '../custom/strapi-image';
 
 const Footer = ({ logo, text, navItems, socialLinks, copyright, address, phone, email }: Readonly<FooterProps>) => {
   return (

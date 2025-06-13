@@ -31,3 +31,7 @@ export interface FooterProps {
   email: string;
 }
 
+export interface FloatingWhatsAppButtonProps {
+  phoneNumber: string;
+}
+

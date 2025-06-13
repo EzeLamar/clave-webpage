@@ -1,11 +1,11 @@
 'use client'
 
+import { FloatingWhatsAppButtonProps } from '@/types/global';
 import React from 'react';
 import { siWhatsapp } from 'simple-icons'
 
-const FloatingWhatsAppButton: React.FC = () => {
+const FloatingWhatsAppButton = ({ phoneNumber }: Readonly<FloatingWhatsAppButtonProps>) => {
     const generateWhatsAppLink = () => {
-        const phoneNumber = "5211234567890"; // Replace with actual phone number
         const message = encodeURIComponent(
             "Hola, me gustaría obtener más información sobre sus productos y servicios."
         );

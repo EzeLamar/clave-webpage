@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import FloatingWhatsAppButton from '@/components/FloatingWhatsAppButton';
+import FloatingWhatsAppButton from '@/components/global/FloatingWhatsAppButton';
 import { strapiApi } from "@/services/api";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Header, Footer } from "@/components/global";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +36,7 @@ export default async function RootLayout({
         <Header {...global.header} />
         {children}
         <Footer {...global.footer} {...global.company} />
-        <FloatingWhatsAppButton />
+        <FloatingWhatsAppButton phoneNumber={global.company.phone} />
       </body>
     </html>
   );

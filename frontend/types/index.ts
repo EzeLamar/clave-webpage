@@ -1,8 +1,21 @@
 import type { LinkProps, ImageProps, ItemProps } from "./base";
-import type { CardCarouselProps, HeroProps, HeadingProps, Block } from "./blocks";
-import type { GlobalProps, HeaderProps, FooterProps } from "./global";
+import type { CardCarouselProps, HeroProps, HeadingProps, Block, AboutUsProps } from "./blocks";
+import type { GlobalProps, HeaderProps, FooterProps, FloatingWhatsAppButtonProps } from "./global";
 
-export type { LinkProps, ImageProps, ItemProps, CardCarouselProps, HeroProps, HeadingProps, Block, GlobalProps, HeaderProps, FooterProps };
+export type {
+  LinkProps,
+  ImageProps,
+  ItemProps,
+  CardCarouselProps,
+  HeroProps,
+  HeadingProps,
+  Block,
+  GlobalProps,
+  HeaderProps,
+  FooterProps,
+  FloatingWhatsAppButtonProps,
+  AboutUsProps
+};
 export interface ProductType {
   id?: number;
   name: string;

@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 import ProductsSection from '@/components/ProductsSection';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
+import Footer from '@/components/global/Footer';
 import { strapiApi } from '@/services/api';
 import { blockRenderer } from '@/services/block-renderer';
 import { Block } from '@/types/blocks';
