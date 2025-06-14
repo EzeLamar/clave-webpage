@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clave Webpage
 
-## Getting Started
+This project consists of a modern web application with a Next.js frontend and a Strapi backend.
 
-First, run the development server:
+## Project Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+clave-webpage/
+├── frontend/          # Next.js frontend application
+└── backend/           # Strapi backend application
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Frontend (Next.js)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The frontend is built with Next.js, providing a modern and performant user interface.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Getting Started
 
-## Learn More
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Deploy on Vercel
+### Available Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run test` - Run tests
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Backend (Strapi)
+
+The backend is powered by Strapi, a headless CMS that provides a robust API and admin panel.
+
+### Getting Started
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run develop
+   # or
+   yarn develop
+   ```
+
+4. Access the admin panel at [http://localhost:1337/admin](http://localhost:1337/admin)
+
+### Environment Variables
+
+Create a `.env` file in the backend directory with the following variables:
+
+```env
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS=your-app-keys
+API_TOKEN_SALT=your-api-token-salt
+ADMIN_JWT_SECRET=your-admin-jwt-secret
+JWT_SECRET=your-jwt-secret
+```
+
+## Development
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+- Git
+
+### Best Practices
+
+1. Always create a new branch for your features
+2. Follow the existing code style
+3. Write meaningful commit messages
+4. Test your changes before submitting a PR
+
+## Deployment
+
+### Frontend
+
+The frontend can be deployed to platforms like Vercel, Netlify, or any other hosting service that supports Next.js applications.
+
+### Backend
+
+The Strapi backend can be deployed to platforms like Heroku, DigitalOcean, or any other hosting service that supports Node.js applications.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details. 

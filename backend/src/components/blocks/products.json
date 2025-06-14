@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blocks_products",
+  "info": {
+    "displayName": "Products"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "anchorLink": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

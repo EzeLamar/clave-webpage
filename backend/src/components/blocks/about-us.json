@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_blocks_about_uses",
+  "info": {
+    "displayName": "About Us"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "shared.item",
+      "repeatable": true
+    },
+    "anchorLink": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}
