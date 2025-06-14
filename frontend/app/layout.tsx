@@ -25,6 +25,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // @ts-expect-error - Strapi API response type is not properly typed
   const { data: global } = await strapiApi.get('/api/global');
 
   return (

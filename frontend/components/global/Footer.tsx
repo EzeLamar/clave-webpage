@@ -1,9 +1,9 @@
 import React from 'react';
-import { siFacebook, siInstagram, siX } from 'simple-icons';
+import { siInstagram } from 'simple-icons';
 import { FooterProps } from '@/types';
 import { StrapiImage } from '../custom/strapi-image';
 
-const Footer = ({ logo, text, navItems, socialLinks, copyright, address, phone, email }: Readonly<FooterProps>) => {
+const Footer = ({ logo, text, socialLinks, copyright, address, phone, email }: Readonly<FooterProps>) => {
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
