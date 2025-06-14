@@ -20,3 +20,25 @@ export interface LinkProps {
     icon: string;
     description: string;
   }
+
+  export interface ProductProps {
+    id: number;
+    sku: string;
+    name: string;
+    description: string;
+    images: ImageProps[];
+    price: number;
+    discount: number;
+    stock: number;
+    features: string[];
+    categories: CategoryProps[];
+  }
+
+  export interface CategoryProps {
+    id: number;
+    name: string;
+    description: string;
+    label: string;
+    image?: ImageProps;
+    products?: ProductProps[];
+  }

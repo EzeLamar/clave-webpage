@@ -1,5 +1,5 @@
 import type { LinkProps, ImageProps, ItemProps } from "./base";
-import type { CardCarouselProps, HeroProps, HeadingProps, Block, AboutUsProps } from "./blocks";
+import type { CardCarouselProps, HeroProps, HeadingProps, Block, AboutUsProps, ProductsProps } from "./blocks";
 import type { GlobalProps, HeaderProps, FooterProps, FloatingWhatsAppButtonProps } from "./global";
 
 export type {
@@ -14,7 +14,8 @@ export type {
   HeaderProps,
   FooterProps,
   FloatingWhatsAppButtonProps,
-  AboutUsProps
+  AboutUsProps,
+  ProductsProps
 };
 export interface ProductType {
   id?: number;

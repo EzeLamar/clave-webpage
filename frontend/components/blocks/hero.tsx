@@ -18,7 +18,6 @@ export const Hero = ({
   const [isVideoMuted, setIsVideoMuted] = useState(true);
 
   const segmentedTitle = title.split("**");
-  console.log(segmentedTitle);
 
   return (
     <section

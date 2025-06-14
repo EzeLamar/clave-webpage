@@ -1,16 +1,16 @@
 import React from 'react';
-import Header from '@/components/Header';
 import ProductsSection from '@/components/ProductsSection';
-import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/global/Footer';
 import { strapiApi } from '@/services/api';
 import { blockRenderer } from '@/services/block-renderer';
 import { Block } from '@/types/blocks';
+import { ProductProps } from '@/types/base';
 
 async function App() {
 
   const landingPage = await strapiApi.get('/api/landing-page');
+  const { data: products } = await strapiApi.get('/api/products');
+  console.log('products', products);
 
   const blocks = landingPage.data.blocks;
   console.log(blocks);
@@ -18,9 +18,7 @@ async function App() {
   return (
     <div className="overflow-x-hidden">
       <main>
-        {blocks.map((block: Block, index: number) => blockRenderer(block, index))}
-        <ProductsSection />
-        <AboutSection />
+        {blocks.map((block: Block, index: number) => blockRenderer(block, index, products))}
         <ContactSection />
       </main>
     </div>

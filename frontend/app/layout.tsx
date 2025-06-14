@@ -26,7 +26,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { data: global } = await strapiApi.get('/api/global');
-  console.log(global);
 
   return (
     <html lang="en">
