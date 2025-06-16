@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
         hostname: "generic-strapi-eshop-production.up.railway.app",
         pathname: "/uploads/**/*",
       },
+      {
+        protocol: "https",
+        hostname: "https://res.cloudinary.com",
+      },
     ],
   },
 };
