@@ -18,7 +18,7 @@ export const AboutUs = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>
             <div className="relative">
-              <StrapiImage src={image.url} alt={image.alternativeText} width={1260} height={750} className="rounded-lg shadow-lg w-full" />
+              {image && <StrapiImage src={image.url} alt={image.alternativeText} width={1260} height={750} className="rounded-lg shadow-lg w-full" />}
               <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-blue-100 rounded-full -z-10"></div>
             </div>
           </div>

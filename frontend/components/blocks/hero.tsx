@@ -124,13 +124,13 @@ export const Hero = ({
               >
                 <RefreshCw className="w-5 h-5 text-white" />
               </button>
-              <StrapiImage
+              {images && <StrapiImage
                 src={images[0].url}
                 alt={images[0].alternativeText}
                 width={500}
                 height={500}
                 className="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105"
-              />
+              />}
               {/* <video
                 autoPlay
                 loop
