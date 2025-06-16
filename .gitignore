@@ -136,8 +136,7 @@ build
 ssl
 .idea
 nbproject
-public/uploads/*
-!public/uploads/.gitkeep
+/backend/public/*
 .tsbuildinfo
 .eslintcache
 next-env.d.ts
