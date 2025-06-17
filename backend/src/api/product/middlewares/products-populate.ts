@@ -8,7 +8,10 @@ const populate = {
   images: {
     fields: ["alternativeText", "url"]
   },
-  features: true
+  features: true,
+  categories: {
+    fields: ["label", "documentId"]
+  }
 }
 
 export default (config, { strapi }: { strapi: Core.Strapi }) => {

@@ -49,16 +49,16 @@
       "type": "text",
       "required": true
     },
-    "features": {
-      "type": "component",
-      "component": "shared.item",
-      "repeatable": true
-    },
     "categories": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category",
       "mappedBy": "product"
+    },
+    "features": {
+      "type": "component",
+      "component": "shared.item",
+      "repeatable": true
     }
   }
 }

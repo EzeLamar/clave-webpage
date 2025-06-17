@@ -8,8 +8,9 @@ export interface BlocksAboutUs extends Struct.ComponentSchema {
   attributes: {
     anchorLink: Schema.Attribute.String;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    items: Schema.Attribute.Component<'shared.item', true>;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    items: Schema.Attribute.Component<'shared.item', true> &
+      Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -24,7 +25,8 @@ export interface BlocksHero extends Struct.ComponentSchema {
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
     images: Schema.Attribute.Media<'images' | 'files' | 'videos', true> &
       Schema.Attribute.Required;
-    items: Schema.Attribute.Component<'shared.item', true>;
+    items: Schema.Attribute.Component<'shared.item', true> &
+      Schema.Attribute.Required;
     navLinks: Schema.Attribute.Component<'shared.link', true> &
       Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;

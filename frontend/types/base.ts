@@ -30,7 +30,7 @@ export interface LinkProps {
     price: number;
     discount: number;
     stock: number;
-    features: string[];
+    features: ItemProps[];
     categories: CategoryProps[];
   }
 

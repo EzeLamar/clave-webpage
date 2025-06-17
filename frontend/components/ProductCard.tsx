@@ -6,7 +6,7 @@ import ContactButton from './ContactButton';
 import { ProductProps } from '@/types/base';
 import { StrapiImage } from './custom/strapi-image';
 
-export const ProductCard = ({name, images, description, features}: ProductProps) => {
+export const ProductCard = ({name, images, description, features, categories}: ProductProps) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg">
       <div className="relative overflow-hidden h-48 sm:h-64">
@@ -17,7 +17,7 @@ export const ProductCard = ({name, images, description, features}: ProductProps)
           className="object-cover transition-transform duration-700 hover:scale-110"
         />
         <div className="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 text-xs rounded-md">
-          {/* {categories[0].label} */}
+          {categories[0].label}
         </div>
       </div>
 
@@ -35,7 +35,7 @@ export const ProductCard = ({name, images, description, features}: ProductProps)
               <div className="flex-shrink-0 mt-1">
                 <Check className="h-4 w-4 text-green-500" />
               </div>
-              <p className="ml-2 text-sm text-gray-600">{feature}</p>
+              <p className="ml-2 text-sm text-gray-600">{feature.title}</p>
             </div>
           ))}
         </div>
