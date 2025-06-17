@@ -26,6 +26,11 @@ const populate = {
         }
       },
       "blocks.markdown": true,
+      "blocks.contact": {
+        populate: {
+          company: true
+        }
+      }
     }
   }
 };

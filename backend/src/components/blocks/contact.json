@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_blocks_contacts",
+  "info": {
+    "displayName": "Contact"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "whatsappMessage": {
+      "type": "text",
+      "required": true
+    },
+    "attentionText": {
+      "type": "text",
+      "default": "Lunes a Viernes de 9:00 a 18:00 hrs. Sábados de 10:00 a 14:00 hrs.",
+      "required": true
+    },
+    "showPhone": {
+      "type": "boolean",
+      "default": true
+    },
+    "showEmail": {
+      "type": "boolean",
+      "default": true
+    },
+    "showAddress": {
+      "type": "boolean",
+      "default": true
+    },
+    "anchorLink": {
+      "type": "string"
+    },
+    "company": {
+      "type": "component",
+      "component": "utils.contact",
+      "repeatable": false,
+      "required": true
+    }
+  },
+  "config": {}
+}

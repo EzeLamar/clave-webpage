@@ -1,4 +1,4 @@
-import { LinkProps, ImageProps, ItemProps, ProductProps } from "./base";
+import { LinkProps, ImageProps, ItemProps, ProductProps, CompanyProps } from "./base";
 
 type ComponentType =
   | "blocks.hero"
@@ -6,6 +6,7 @@ type ComponentType =
   | "blocks.card-carousel"
   | "blocks.about-us"
   | "blocks.products"
+  | "blocks.contact"
 
 interface Base<T extends ComponentType, D extends object = Record<string, unknown>> {
   id: number;
@@ -23,6 +24,7 @@ export type Block =
   | CardCarouselProps
   | AboutUsProps
   | ProductsProps
+  | ContactProps
 export interface HeroProps extends Base<"blocks.hero"> {
   title: string;
   description: string;
@@ -64,4 +66,16 @@ export interface ProductsProps extends Base<"blocks.products"> {
   description: string;
   anchorLink: string;
   products: ProductProps[];
+}
+
+export interface ContactProps extends Base<"blocks.contact"> {
+  title: string;
+  anchorLink: string;
+  description: string;
+  whatsappMessage: string;
+  attentionText: string;
+  showPhone: boolean;
+  showEmail: boolean;
+  showAddress: boolean;
+  company: CompanyProps;
 }

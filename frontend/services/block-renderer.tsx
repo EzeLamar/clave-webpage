@@ -1,6 +1,6 @@
 import type { Block } from "@/types";
 
-import { AboutUs, Hero, ProductsSection } from "@/components/blocks";
+import { AboutUs, Hero, ProductsSection, ContactSection } from "@/components/blocks";
 import { ProductProps } from "@/types/base";
 
 export function blockRenderer(block: Block, index: number, products: ProductProps[]) {
@@ -11,6 +11,8 @@ export function blockRenderer(block: Block, index: number, products: ProductProp
       return <AboutUs {...block} key={index} />;
     case "blocks.products":
       return <ProductsSection {...block} key={index} products={products} />;
+    case "blocks.contact":
+      return <ContactSection {...block} key={index} />;
     default:
       return null;
   }

@@ -25,7 +25,8 @@
         "blocks.hero",
         "blocks.products",
         "blocks.about-us",
-        "blocks.markdown"
+        "blocks.markdown",
+        "blocks.contact"
       ]
     }
   }

@@ -35,7 +35,7 @@ export default async function RootLayout({
       >
         <Header {...global.header} />
         {children}
-        <Footer {...global.footer} {...global.company} />
+        <Footer {...global.footer} company={global.company} />
         <FloatingWhatsAppButton phoneNumber={global.company.phone} />
       </body>
     </html>

@@ -15,6 +15,27 @@ export interface BlocksAboutUs extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksContact extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_contacts';
+  info: {
+    displayName: 'Contact';
+  };
+  attributes: {
+    anchorLink: Schema.Attribute.String;
+    attentionText: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Lunes a Viernes de 9:00 a 18:00 hrs. S\u00E1bados de 10:00 a 14:00 hrs.'>;
+    company: Schema.Attribute.Component<'utils.contact', false> &
+      Schema.Attribute.Required;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    showAddress: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showEmail: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    showPhone: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    whatsappMessage: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
 export interface BlocksHero extends Struct.ComponentSchema {
   collectionName: 'components_blocks_heroes';
   info: {
@@ -232,6 +253,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blocks.about-us': BlocksAboutUs;
+      'blocks.contact': BlocksContact;
       'blocks.hero': BlocksHero;
       'blocks.markdown': BlocksMarkdown;
       'blocks.products': BlocksProducts;

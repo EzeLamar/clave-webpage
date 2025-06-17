@@ -42,3 +42,10 @@ export interface LinkProps {
     image?: ImageProps;
     products?: ProductProps[];
   }
+
+  export interface CompanyProps {
+    id: number;
+    phone: string;
+    email: string;
+    address: string;
+  }

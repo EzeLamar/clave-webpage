@@ -1,8 +1,9 @@
-import { ImageProps, LinkProps } from "./base";
+import { CompanyProps, ImageProps, LinkProps } from "./base";
 
 export interface GlobalProps {
   header: HeaderProps;
   footer: FooterProps;
+  company: CompanyProps;
 }
 
 export interface HeaderProps {
@@ -26,9 +27,7 @@ export interface FooterProps {
   navItems: LinkProps[];
   socialLinks: LogoProps[];
   copyright: string;
-  address: string;
-  phone: string;
-  email: string;
+  company: CompanyProps;
 }
 
 export interface FloatingWhatsAppButtonProps {
