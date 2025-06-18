@@ -16,11 +16,13 @@ export const AboutUs = ({
     <section id={anchorLink} className="py-16 md:py-20 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div>
-            <div className="relative">
-              {image && <StrapiImage src={image.url} alt={image.alternativeText} width={1260} height={750} className="rounded-lg shadow-lg w-full" />}
-              <div className="absolute -bottom-5 -right-5 w-32 h-32 bg-blue-100 rounded-full -z-10"></div>
-            </div>
+          <div className="relative overflow-hidden rounded-lg shadow-lg h-64 md:h-80 max-w-xl">
+            <StrapiImage
+              src={image.url}
+              alt={image.alternativeText}
+              // className="object-cover"
+              fill
+            />
           </div>
 
           <div>
