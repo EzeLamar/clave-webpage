@@ -73,7 +73,7 @@ export const ContactSection = ({
               </div>)}
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white rounded-lg shadow-md p-6 order-first md:order-last">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">Contáctanos directamente</h3>
               <p className="text-gray-600 mb-6">
                 Haz clic en el botón de abajo para iniciar una conversación por WhatsApp 
