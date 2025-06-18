@@ -6,10 +6,11 @@ import { siWhatsapp } from 'simple-icons'
 
 const FloatingWhatsAppButton = ({ phoneNumber }: Readonly<FloatingWhatsAppButtonProps>) => {
     const generateWhatsAppLink = () => {
+        const whatsappPhoneNumber = phoneNumber.replace(/\D/g, '');
         const message = encodeURIComponent(
             "Hola, me gustaría obtener más información sobre sus productos y servicios."
         );
-        return `https://wa.me/${phoneNumber}?text=${message}`;
+        return `https://wa.me/${whatsappPhoneNumber}?text=${message}`;
     };
 
     return (

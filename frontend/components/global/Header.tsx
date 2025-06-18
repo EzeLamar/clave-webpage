@@ -31,7 +31,7 @@ const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
             <ul className="flex space-x-8">
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <a href={item.href} className="text-gray-800 hover:text-blue-700 font-medium transition-colors">
+                  <a href={item.href} className="text-gray-800 hover:text-blue-700 font-medium transition-colors capitalize">
                     {item.label}
                   </a>
                 </li>
