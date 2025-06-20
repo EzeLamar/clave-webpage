@@ -55,7 +55,7 @@ export const Hero = ({
                       <a
                         href={link.href}
                         key={link.id}
-                        className="bg-blue-700 hover:bg-blue-800 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center"
+                      className="bg-blue-700 hover:bg-blue-800 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center"
                       >
                         {link.label}
                       </a>

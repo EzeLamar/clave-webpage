@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_opinions",
+  "info": {
+    "displayName": "Opinions"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "anchorLink": {
+      "type": "string"
+    },
+    "show": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    }
+  },
+  "config": {}
+}

@@ -1,6 +1,6 @@
 import type { Block } from "@/types";
 
-import { AboutUs, Hero, ProductsSection, ContactSection, CategoriesSection } from "@/components/blocks";
+import { AboutUs, Hero, ProductsSection, ContactSection, CategoriesSection, Opinions } from "@/components/blocks";
 import { CategoryProps, ProductProps } from "@/types/base";
 import strapiApi from "./api";
 
@@ -12,6 +12,8 @@ export async function blockRenderer(block: Block, index: number, products: Produ
       return <Hero {...block} key={index} />;
     case "blocks.about-us":
       return <AboutUs {...block} key={index} />;
+    case "blocks.opinions":
+      return <Opinions {...block} key={index} />;
     case "blocks.products":
       return <ProductsSection {...block} key={index} products={products} />;
     case "blocks.contact":

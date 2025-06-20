@@ -92,6 +92,20 @@ export interface BlocksMarkdown extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksOpinions extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_opinions';
+  info: {
+    displayName: 'Opinions';
+  };
+  attributes: {
+    anchorLink: Schema.Attribute.String;
+    show: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface BlocksProducts extends Struct.ComponentSchema {
   collectionName: 'components_blocks_products';
   info: {
@@ -288,6 +302,7 @@ declare module '@strapi/strapi' {
       'blocks.contact': BlocksContact;
       'blocks.hero': BlocksHero;
       'blocks.markdown': BlocksMarkdown;
+      'blocks.opinions': BlocksOpinions;
       'blocks.products': BlocksProducts;
       'layout.about': LayoutAbout;
       'layout.banner': LayoutBanner;

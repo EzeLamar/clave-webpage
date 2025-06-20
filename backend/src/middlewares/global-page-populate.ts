@@ -35,7 +35,8 @@ const populate = {
         populate: {
           productLink: true,
         }
-      }
+      },
+      "blocks.opinions": true
     }
   }
 };

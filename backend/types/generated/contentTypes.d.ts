@@ -465,6 +465,7 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
         'blocks.markdown',
         'blocks.contact',
         'blocks.categories',
+        'blocks.opinions',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
