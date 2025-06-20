@@ -26,7 +26,8 @@
         "blocks.products",
         "blocks.about-us",
         "blocks.markdown",
-        "blocks.contact"
+        "blocks.contact",
+        "blocks.categories"
       ]
     }
   }

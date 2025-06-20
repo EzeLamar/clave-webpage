@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_blocks_products",
+  "collectionName": "components_blocks_categories",
   "info": {
-    "displayName": "Products"
+    "displayName": "Categories"
   },
   "options": {},
   "attributes": {
@@ -9,10 +9,15 @@
       "type": "string"
     },
     "description": {
-      "type": "richtext"
+      "type": "text"
     },
     "anchorLink": {
       "type": "string"
+    },
+    "productLink": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": false
     },
     "show": {
       "type": "boolean",

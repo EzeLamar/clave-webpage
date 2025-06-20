@@ -42,6 +42,11 @@
       "component": "utils.contact",
       "repeatable": false,
       "required": true
+    },
+    "show": {
+      "type": "boolean",
+      "required": true,
+      "default": true
     }
   },
   "config": {}

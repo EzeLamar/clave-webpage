@@ -30,6 +30,11 @@ const populate = {
         populate: {
           company: true
         }
+      },
+      "blocks.categories": {
+        populate: {
+          productLink: true,
+        }
       }
     }
   }

@@ -37,6 +37,11 @@
     },
     "anchorLink": {
       "type": "string"
+    },
+    "show": {
+      "type": "boolean",
+      "required": true,
+      "default": true
     }
   },
   "config": {}

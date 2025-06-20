@@ -1,4 +1,4 @@
-import { LinkProps, ImageProps, ItemProps, ProductProps, CompanyProps } from "./base";
+import { LinkProps, ImageProps, ItemProps, ProductProps, CompanyProps, CategoryProps } from "./base";
 
 type ComponentType =
   | "blocks.hero"
@@ -7,6 +7,7 @@ type ComponentType =
   | "blocks.about-us"
   | "blocks.products"
   | "blocks.contact"
+  | "blocks.categories"
 
 interface Base<T extends ComponentType, D extends object = Record<string, unknown>> {
   id: number;
@@ -25,7 +26,9 @@ export type Block =
   | AboutUsProps
   | ProductsProps
   | ContactProps
+  | CategoriesProps
 export interface HeroProps extends Base<"blocks.hero"> {
+  show: boolean;
   title: string;
   description: string;
   navLinks: LinkProps[];
@@ -35,6 +38,7 @@ export interface HeroProps extends Base<"blocks.hero"> {
 }
 
 export interface CardCarouselItem {
+  show: boolean;
   id: number;
   heading: string;
   subHeading: string;
@@ -43,10 +47,12 @@ export interface CardCarouselItem {
 }
 
 export interface CardCarouselProps extends Base<"blocks.card-carousel"> {
+  show: boolean;
   cards: CardCarouselItem[];
 }
 
 export interface HeadingProps extends Base<"blocks.heading"> {
+  show: boolean;
   heading: string;
   subHeading: string;
   text?: string;
@@ -54,6 +60,7 @@ export interface HeadingProps extends Base<"blocks.heading"> {
 }
 
 export interface AboutUsProps extends Base<"blocks.about-us"> {
+  show: boolean;
   title: string;
   description: string;
   image: ImageProps;
@@ -62,6 +69,7 @@ export interface AboutUsProps extends Base<"blocks.about-us"> {
 }
 
 export interface ProductsProps extends Base<"blocks.products"> {
+  show: boolean;
   title: string;
   description: string;
   anchorLink: string;
@@ -69,6 +77,7 @@ export interface ProductsProps extends Base<"blocks.products"> {
 }
 
 export interface ContactProps extends Base<"blocks.contact"> {
+  show: boolean;
   title: string;
   anchorLink: string;
   description: string;
@@ -78,4 +87,13 @@ export interface ContactProps extends Base<"blocks.contact"> {
   showEmail: boolean;
   showAddress: boolean;
   company: CompanyProps;
+}
+
+export interface CategoriesProps extends Base<"blocks.categories"> {
+  show: boolean;
+  title: string;
+  description: string;
+  anchorLink: string;
+  categories: CategoryProps[];
+  productLink: LinkProps;
 }

@@ -11,7 +11,26 @@ export interface BlocksAboutUs extends Struct.ComponentSchema {
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     items: Schema.Attribute.Component<'shared.item', true> &
       Schema.Attribute.Required;
+    show: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface BlocksCategories extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_categories';
+  info: {
+    displayName: 'Categories';
+  };
+  attributes: {
+    anchorLink: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    productLink: Schema.Attribute.Component<'shared.link', false>;
+    show: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -28,6 +47,9 @@ export interface BlocksContact extends Struct.ComponentSchema {
     company: Schema.Attribute.Component<'utils.contact', false> &
       Schema.Attribute.Required;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
+    show: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
     showAddress: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     showEmail: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     showPhone: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
@@ -50,6 +72,9 @@ export interface BlocksHero extends Struct.ComponentSchema {
       Schema.Attribute.Required;
     navLinks: Schema.Attribute.Component<'shared.link', true> &
       Schema.Attribute.Required;
+    show: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -61,6 +86,9 @@ export interface BlocksMarkdown extends Struct.ComponentSchema {
   };
   attributes: {
     content: Schema.Attribute.RichText & Schema.Attribute.Required;
+    show: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -72,6 +100,9 @@ export interface BlocksProducts extends Struct.ComponentSchema {
   attributes: {
     anchorLink: Schema.Attribute.String;
     description: Schema.Attribute.RichText;
+    show: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
     title: Schema.Attribute.String;
   };
 }
@@ -253,6 +284,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blocks.about-us': BlocksAboutUs;
+      'blocks.categories': BlocksCategories;
       'blocks.contact': BlocksContact;
       'blocks.hero': BlocksHero;
       'blocks.markdown': BlocksMarkdown;

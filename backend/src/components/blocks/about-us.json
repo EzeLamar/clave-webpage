@@ -29,6 +29,11 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "show": {
+      "type": "boolean",
+      "required": true,
+      "default": true
     }
   },
   "config": {}

@@ -39,7 +39,7 @@ export interface LinkProps {
     name: string;
     description: string;
     label: string;
-    image?: ImageProps;
+    image: ImageProps;
     products?: ProductProps[];
   }
 
