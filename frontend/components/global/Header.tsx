@@ -56,7 +56,7 @@ const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
               <li key={item.id}>
                 <a
                   href={item.href}
-                  className="text-gray-800 hover:text-blue-700 font-medium block py-2 transition-colors"
+                  className="text-gray-800 hover:text-blue-700 font-medium block py-2 transition-colors capitalize"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
