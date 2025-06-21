@@ -1,5 +1,6 @@
 'use client'
 
+import { useGlobal } from '@/context/GlobalContext';
 import React from 'react';
 import { siWhatsapp } from 'simple-icons';
 
@@ -8,10 +9,11 @@ interface ContactButtonProps {
 }
 
 const ContactButton: React.FC<ContactButtonProps> = ({ productName }) => {
+  const global = useGlobal();
   const generateWhatsAppLink = () => {
-    const phoneNumber = "5211234567890"; // Replace with actual phone number
+    const phoneNumber = global?.company.phone.replace(/\D/g, '');
     const message = encodeURIComponent(
-      `Hola, estoy interesado en obtener más información sobre el purificador ${productName}. ¿Podría proporcionarme más detalles sobre características, precio y disponibilidad?`
+      `Hola, estoy interesado en obtener más información sobre el producto "${productName}". ¿Podría proporcionarme más detalles sobre características, precio y disponibilidad?`
     );
     return `https://wa.me/${phoneNumber}?text=${message}`;
   };

@@ -4,6 +4,7 @@ import "./globals.css";
 import FloatingWhatsAppButton from '@/components/global/FloatingWhatsAppButton';
 import { strapiApi } from "@/services/api";
 import { Header, Footer } from "@/components/global";
+import GlobalProvider from "@/context/GlobalProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,9 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header {...global.header} />
-        {children}
+        <GlobalProvider global={global}>
+          {children}
+        </GlobalProvider>
         <Footer {...global.footer} company={global.company} />
         <FloatingWhatsAppButton phoneNumber={global.company.phone} />
       </body>

@@ -61,7 +61,7 @@ export const ProductsSection = ({ title, description, anchorLink, products, cate
                   animationFillMode: 'forwards'
                 }}
               >
-                <ProductCard {...product} />
+                <ProductCard {...product}  />
               </div>
             ))}
           </div>
