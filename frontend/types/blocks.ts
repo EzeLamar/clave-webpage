@@ -76,6 +76,7 @@ export interface ProductsProps extends Base<"blocks.products"> {
   description: string;
   anchorLink: string;
   products: ProductProps[];
+  categoryNames: string[];
 }
 
 export interface ContactProps extends Base<"blocks.contact"> {
@@ -98,6 +99,7 @@ export interface CategoriesProps extends Base<"blocks.categories"> {
   anchorLink: string;
   categories: CategoryProps[];
   productLink: LinkProps;
+  products: Pick<ProductProps, 'id' | 'enabled' | 'sku' | 'name' | 'stock'>[];
 }
 
 export interface OpinionsProps extends Base<"blocks.opinions"> {

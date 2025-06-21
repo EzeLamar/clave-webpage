@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { HeaderProps } from '@/types';
 import { StrapiImage } from '../custom/strapi-image';
+import Link from 'next/link';
 
 const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,16 +25,18 @@ const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <StrapiImage src={logo.image.url} alt={logo.image.alternativeText} width={100} height={100} />
+            <Link href={logo.href}>
+              <StrapiImage src={logo.image.url} alt={logo.image.alternativeText} width={100} height={100} />
+            </Link>
           </div>
 
           <nav className="hidden md:block">
             <ul className="flex space-x-8">
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <a href={item.href} className="text-gray-800 hover:text-blue-700 font-medium transition-colors capitalize">
+                  <Link href={item.href} className="text-gray-800 hover:text-blue-700 font-medium transition-colors capitalize">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -54,13 +57,13 @@ const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
           <ul className="flex flex-col space-y-4">
             {navItems.map((item) => (
               <li key={item.id}>
-                <a
+                <Link
                   href={item.href}
                   className="text-gray-800 hover:text-blue-700 font-medium block py-2 transition-colors capitalize"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

@@ -23,6 +23,7 @@ export interface LinkProps {
 
   export interface ProductProps {
     id: number;
+    enabled: boolean;
     sku: string;
     name: string;
     description: string;
@@ -36,11 +37,12 @@ export interface LinkProps {
 
   export interface CategoryProps {
     id: number;
+    enabled: boolean;
     name: string;
     description: string;
     label: string;
     image: ImageProps;
-    products?: ProductProps[];
+    products: ProductProps[];
   }
 
   export interface CompanyProps {

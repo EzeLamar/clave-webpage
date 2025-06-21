@@ -8,6 +8,9 @@ const populate = {
   image: {
     fields: ["alternativeText", "url"]
   },
+  products: {
+    fields: ["enabled", "sku", "name", "stock"]
+  }
 }
 
 export default (config, { strapi }: { strapi: Core.Strapi }) => {

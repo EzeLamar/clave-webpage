@@ -15,6 +15,11 @@
       "type": "uid",
       "targetField": "name"
     },
+    "enabled": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
     "name": {
       "type": "string",
       "required": true
@@ -51,9 +56,9 @@
     },
     "categories": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::category.category",
-      "mappedBy": "product"
+      "mappedBy": "products"
     },
     "features": {
       "type": "component",

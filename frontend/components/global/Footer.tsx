@@ -2,6 +2,7 @@ import React from 'react';
 import { siInstagram } from 'simple-icons';
 import { FooterProps } from '@/types';
 import { StrapiImage } from '../custom/strapi-image';
+import Link from 'next/link';
 
 const Footer = ({ logo, text, socialLinks, copyright, company }: Readonly<FooterProps>) => {
   return (
@@ -17,11 +18,11 @@ const Footer = ({ logo, text, socialLinks, copyright, company }: Readonly<Footer
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((item) => (
-                <a key={item.id} href={item.href} target={item.isExternal ? "_blank" : "_self"} rel="noopener noreferrer">
+                <Link key={item.id} href={item.href} target={item.isExternal ? "_blank" : "_self"} rel="noopener noreferrer">
                   <svg role="img" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                     <path d={siInstagram.path} />
                   </svg>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -30,24 +31,24 @@ const Footer = ({ logo, text, socialLinks, copyright, company }: Readonly<Footer
             <h3 className="text-lg font-semibold mb-5">Productos</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                   Purificadores Residenciales
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                   Sistemas Comerciales
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                   Filtros de Repuesto
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                   Accesorios
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -56,24 +57,24 @@ const Footer = ({ logo, text, socialLinks, copyright, company }: Readonly<Footer
             <h3 className="text-lg font-semibold mb-5">Servicios</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                   Instalación
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                   Mantenimiento
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                   Asesoría Técnica
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="#" className="text-gray-400 hover:text-white transition-colors">
                   Garantía
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
