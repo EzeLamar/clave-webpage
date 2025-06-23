@@ -13,13 +13,21 @@ const populate = {
             fields: ["alternativeText", "url"]
           },
           navLinks: true,
-          items: true
+          items: {
+            populate: {
+              icon: true
+            }
+          }
         }
       },
       "blocks.products": true,
       "blocks.about-us": {
         populate: {
-          items: true,
+          items: {
+            populate: {
+              icon: true,
+            }
+          },
           image: {
             fields: ["alternativeText", "url"]
           }

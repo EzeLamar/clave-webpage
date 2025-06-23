@@ -8,11 +8,13 @@
     "title": {
       "type": "string"
     },
-    "icon": {
-      "type": "string"
-    },
     "description": {
       "type": "text"
+    },
+    "icon": {
+      "type": "component",
+      "component": "shared.icon",
+      "repeatable": false
     }
   },
   "config": {}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_icons",
+  "info": {
+    "displayName": "Icon"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "enumeration",
+      "enum": [
+        "Droplet",
+        "CheckCircle",
+        "Shield",
+        "Award",
+        "Clock",
+        "ThumbsUp"
+      ]
+    }
+  },
+  "config": {}
+}

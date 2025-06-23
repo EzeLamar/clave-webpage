@@ -1,3 +1,5 @@
+import { IconNames } from "@/components/custom/icon";
+
 export interface LinkProps {
     id: number;
     label: string;
@@ -14,10 +16,15 @@ export interface LinkProps {
     alternativeText: string | null;
   }
 
+  export interface IconProp {
+    id: number;
+    name: IconNames;
+  }
+
   export interface ItemProps {
     id: number;
     title: string;
-    icon: string;
+    icon: IconProp;
     description: string;
   }
 

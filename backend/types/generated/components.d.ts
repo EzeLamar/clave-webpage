@@ -172,6 +172,18 @@ export interface LayoutNavbar extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedIcon extends Struct.ComponentSchema {
+  collectionName: 'components_shared_icons';
+  info: {
+    displayName: 'Icon';
+  };
+  attributes: {
+    name: Schema.Attribute.Enumeration<
+      ['Droplet', 'CheckCircle', 'Shield', 'Award', 'Clock', 'ThumbsUp']
+    >;
+  };
+}
+
 export interface SharedItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_items';
   info: {
@@ -179,7 +191,7 @@ export interface SharedItem extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Text;
-    icon: Schema.Attribute.String;
+    icon: Schema.Attribute.Component<'shared.icon', false>;
     title: Schema.Attribute.String;
   };
 }
@@ -307,6 +319,7 @@ declare module '@strapi/strapi' {
       'layout.banner': LayoutBanner;
       'layout.footer': LayoutFooter;
       'layout.navbar': LayoutNavbar;
+      'shared.icon': SharedIcon;
       'shared.item': SharedItem;
       'shared.link': SharedLink;
       'shared.logo-link': SharedLogoLink;
