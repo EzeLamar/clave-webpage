@@ -1,10 +1,14 @@
-import React from 'react';
+'use client'
+
 import { siInstagram } from 'simple-icons';
 import { FooterProps } from '@/types';
 import { StrapiImage } from '../custom/strapi-image';
 import Link from 'next/link';
+import { useGlobal } from '@/context/GlobalContext';
 
-const Footer = ({ logo, text, socialLinks, copyright, company }: Readonly<FooterProps>) => {
+const Footer = ({ logo, text, socialLinks, copyright }: Readonly<FooterProps>) => {
+  const global = useGlobal();
+  const company = global?.company;
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
@@ -81,12 +85,11 @@ const Footer = ({ logo, text, socialLinks, copyright, company }: Readonly<Footer
 
           <div>
             <h3 className="text-lg font-semibold mb-5">Contacto</h3>
-            <ul className="space-y-3 text-gray-400">
-              {company.address && <li>{company.address}</li>}
-              <li>Ciudad México, CP 12345</li>
+            {company && <ul className="space-y-3 text-gray-400">
+              {(company.city && company.postalCode) && <li>{`${company.city}, CP ${company.postalCode}`}</li>}
               {company.phone && <li>{company.phone}</li>}
               {company.email && <li>{company.email}</li>}
-            </ul>
+            </ul>}
           </div>
         </div>
 

@@ -4,6 +4,7 @@ export interface GlobalProps {
   header: HeaderProps;
   footer: FooterProps;
   company: CompanyProps;
+  isVisibleContactButton: boolean;
 }
 
 export interface HeaderProps {
@@ -27,10 +28,4 @@ export interface FooterProps {
   navItems: LinkProps[];
   socialLinks: LogoProps[];
   copyright: string;
-  company: CompanyProps;
 }
-
-export interface FloatingWhatsAppButtonProps {
-  phoneNumber: string;
-}
-

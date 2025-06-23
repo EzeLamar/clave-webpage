@@ -89,7 +89,6 @@ export interface ContactProps extends Base<"blocks.contact"> {
   showPhone: boolean;
   showEmail: boolean;
   showAddress: boolean;
-  company: CompanyProps;
 }
 
 export interface CategoriesProps extends Base<"blocks.categories"> {

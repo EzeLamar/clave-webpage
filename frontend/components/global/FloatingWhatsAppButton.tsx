@@ -1,12 +1,13 @@
 'use client'
 
-import { FloatingWhatsAppButtonProps } from '@/types/global';
+import { useGlobal } from '@/context/GlobalContext';
 import React from 'react';
 import { siWhatsapp } from 'simple-icons'
 
-const FloatingWhatsAppButton = ({ phoneNumber }: Readonly<FloatingWhatsAppButtonProps>) => {
+const FloatingWhatsAppButton = () => {
+    const global = useGlobal();
     const generateWhatsAppLink = () => {
-        const whatsappPhoneNumber = phoneNumber.replace(/\D/g, '');
+        const whatsappPhoneNumber = global?.company.phone.replace(/\D/g, '');
         const message = encodeURIComponent(
             "Hola, me gustaría obtener más información sobre sus productos y servicios."
         );

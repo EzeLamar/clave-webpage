@@ -37,9 +37,9 @@ export default async function RootLayout({
         <Header {...global.header} />
         <GlobalProvider global={global}>
           {children}
+          {global.isVisibleContactButton && <FloatingWhatsAppButton />}
+          <Footer {...global.footer} />
         </GlobalProvider>
-        <Footer {...global.footer} company={global.company} />
-        <FloatingWhatsAppButton phoneNumber={global.company.phone} />
       </body>
     </html>
   );

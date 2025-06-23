@@ -26,11 +26,7 @@ const populate = {
         }
       },
       "blocks.markdown": true,
-      "blocks.contact": {
-        populate: {
-          company: true
-        }
-      },
+      "blocks.contact": true,
       "blocks.categories": {
         populate: {
           productLink: true,

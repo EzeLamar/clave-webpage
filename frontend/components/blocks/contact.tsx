@@ -4,6 +4,7 @@ import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { siWhatsapp } from 'simple-icons';
 import { ContactProps } from '@/types/blocks';
+import { useGlobal } from '@/context/GlobalContext';
 
 export const ContactSection = ({
   title,
@@ -13,11 +14,11 @@ export const ContactSection = ({
   attentionText,
   showPhone,
   showEmail,
-  showAddress,
-  company
+  showAddress
 }: ContactProps) => {
+  const global = useGlobal();
   const generateWhatsAppLink = () => {
-    const whatsappPhoneNumber = company.phone.replace(/\D/g, '');
+    const whatsappPhoneNumber = global?.company.phone.replace(/\D/g, '');
     const message = encodeURIComponent(
       whatsappMessage
     );
@@ -44,7 +45,7 @@ export const ContactSection = ({
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">Teléfono</h3>
-                  <p className="text-gray-600">{company.phone}</p>
+                  <p className="text-gray-600">{global?.company.phone}</p>
                 </div>
                   </div>
               )}
@@ -56,7 +57,7 @@ export const ContactSection = ({
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">Correo electrónico</h3>
-                  <p className="text-gray-600">{company.email}</p>
+                  <p className="text-gray-600">{global?.company.email}</p>
                 </div>
               </div>
               )}
@@ -67,8 +68,8 @@ export const ContactSection = ({
                     <MapPin className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">Dirección</h3>
-                  <p className="text-gray-600">{company.address}</p>
+                  <h3 className="text-lg font-semibold text-gray-800">Ubicación</h3>
+                  <p className="text-gray-600">{`${global?.company.city}, CP ${global?.company.postalCode}`}</p>
                 </div>
               </div>)}
             </div>

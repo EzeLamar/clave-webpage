@@ -37,12 +37,6 @@
     "anchorLink": {
       "type": "string"
     },
-    "company": {
-      "type": "component",
-      "component": "utils.contact",
-      "repeatable": false,
-      "required": true
-    },
     "show": {
       "type": "boolean",
       "required": true,

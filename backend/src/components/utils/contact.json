@@ -13,8 +13,13 @@
       "type": "email",
       "required": true
     },
-    "address": {
-      "type": "text"
+    "city": {
+      "type": "text",
+      "required": false
+    },
+    "postalCode": {
+      "type": "string",
+      "required": false
     }
   },
   "config": {}

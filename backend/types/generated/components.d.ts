@@ -44,8 +44,6 @@ export interface BlocksContact extends Struct.ComponentSchema {
     attentionText: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Lunes a Viernes de 9:00 a 18:00 hrs. S\u00E1bados de 10:00 a 14:00 hrs.'>;
-    company: Schema.Attribute.Component<'utils.contact', false> &
-      Schema.Attribute.Required;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
     show: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
@@ -288,9 +286,10 @@ export interface UtilsContact extends Struct.ComponentSchema {
     displayName: 'Company';
   };
   attributes: {
-    address: Schema.Attribute.Text;
+    city: Schema.Attribute.Text;
     email: Schema.Attribute.Email & Schema.Attribute.Required;
     phone: Schema.Attribute.String & Schema.Attribute.Required;
+    postalCode: Schema.Attribute.String;
   };
 }
 
