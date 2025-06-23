@@ -28,7 +28,7 @@ const ContactButton: React.FC<ContactButtonProps> = ({ productName }) => {
       <svg role="img" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
         <path d={siWhatsapp.path} />
       </svg>
-      <span>Contactar</span>
+      <span>Consultar</span>
     </a>
   );
 };
