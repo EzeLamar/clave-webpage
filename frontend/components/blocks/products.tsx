@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductsProps } from '@/types';
 import { useSearchParams } from 'next/navigation';
+import { useProducts } from '@/context/ProductsContext';
 
-export const ProductsSection = ({ title, description, anchorLink, products, categoryNames }: ProductsProps) => {
+export const ProductsSection = ({ title, description, anchorLink, categoryNames }: ProductsProps) => {
+  const products = useProducts();
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
   const [activeCategory, setActiveCategory] = useState(category ? category : 'all');

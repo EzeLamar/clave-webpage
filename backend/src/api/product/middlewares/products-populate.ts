@@ -11,6 +11,9 @@ const populate = {
   features: true,
   categories: {
     fields: ["label", "documentId"]
+  },
+  brand: {
+    fields: ["name", "documentId"]
   }
 }
 

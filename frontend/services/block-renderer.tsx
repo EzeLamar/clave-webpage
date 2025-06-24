@@ -16,12 +16,10 @@ export async function blockRenderer(block: Block, index: number) {
       return <Opinions {...block} key={index} />;
     case "blocks.products": {
       // @ts-expect-error - Strapi API response type is not properly typed
-      const { data: products } = await strapiApi.get('/api/products');
-      // @ts-expect-error - Strapi API response type is not properly typed
       const { data: categories } = await strapiApi.get('/api/categories');
 
       // @ts-expect-error - Strapi API response type is not properly typed
-      return <ProductsSection {...block} key={index} products={products} categoryNames={categories.map(category => category.label)} />;
+      return <ProductsSection {...block} key={index} categoryNames={categories.map(category => category.label)} />;
     }
     
     case "blocks.contact":

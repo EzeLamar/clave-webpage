@@ -24,6 +24,12 @@
       "type": "string",
       "required": true
     },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
     "price": {
       "type": "decimal",
       "required": true

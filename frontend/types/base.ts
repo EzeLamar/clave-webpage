@@ -28,6 +28,11 @@ export interface LinkProps {
     description: string;
   }
 
+  export interface BrandProps {
+    id: number;
+    name: string;
+  }
+
   export interface ProductProps {
     id: number;
     enabled: boolean;
@@ -40,6 +45,7 @@ export interface LinkProps {
     stock: number;
     features: ItemProps[];
     categories: CategoryProps[];
+    brand: BrandProps;
   }
 
   export interface CategoryProps {
