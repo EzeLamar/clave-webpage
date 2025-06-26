@@ -25,8 +25,7 @@ export default async function DynamicPage({
 }) {
     const { slug } = await params;
     const page = await getPageBySlug(slug);
-    console.log("page", page);
-    if (!page) {
+    if (!page || !page.enabled) {
         notFound(); // 404
     }
 
