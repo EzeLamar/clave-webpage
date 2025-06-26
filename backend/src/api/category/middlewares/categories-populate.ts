@@ -9,7 +9,7 @@ const populate = {
     fields: ["alternativeText", "url"]
   },
   products: {
-    fields: ["enabled", "sku", "name", "stock"]
+    fields: ["enabled", "slug", "sku", "name", "stock"]
   }
 }
 

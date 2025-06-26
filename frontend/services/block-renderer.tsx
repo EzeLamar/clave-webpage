@@ -1,8 +1,6 @@
 import type { Block } from "@/types";
 
 import { AboutUs, Hero, ProductsSection, ContactSection, CategoriesSection, Opinions } from "@/components/blocks";
-import { CategoryProps } from "@/types/base";
-import strapiApi from "./api";
 
 export async function blockRenderer(block: Block, index: number) {
   if (!block.show) return null;
@@ -14,22 +12,12 @@ export async function blockRenderer(block: Block, index: number) {
       return <AboutUs {...block} key={index} />;
     case "blocks.opinions":
       return <Opinions {...block} key={index} />;
-    case "blocks.products": {
-      // @ts-expect-error - Strapi API response type is not properly typed
-      const { data: categories } = await strapiApi.get('/api/categories');
-
-      // @ts-expect-error - Strapi API response type is not properly typed
-      return <ProductsSection {...block} key={index} categoryNames={categories.map(category => category.label)} />;
-    }
-    
+    case "blocks.products":
+      return <ProductsSection {...block} key={index} />;
     case "blocks.contact":
       return <ContactSection {...block} key={index} />;
     case "blocks.categories": {
-      // @ts-expect-error - Strapi API response type is not properly typed
-      const { data: categories } = await strapiApi.get<CategoryProps[]>("/api/categories");
-      console.log('categories',categories);
-
-      return <CategoriesSection {...block} key={index} categories={categories} />;
+      return <CategoriesSection {...block} key={index} />;
     }
     default:
       return null;

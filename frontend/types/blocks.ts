@@ -1,4 +1,4 @@
-import { LinkProps, ImageProps, ItemProps, ProductProps, CompanyProps, CategoryProps } from "./base";
+import { LinkProps, ImageProps, ItemProps, ProductProps } from "./base";
 
 type ComponentType =
   | "blocks.hero"
@@ -76,7 +76,6 @@ export interface ProductsProps extends Base<"blocks.products"> {
   description: string;
   anchorLink: string;
   products: ProductProps[];
-  categoryNames: string[];
 }
 
 export interface ContactProps extends Base<"blocks.contact"> {
@@ -96,7 +95,6 @@ export interface CategoriesProps extends Base<"blocks.categories"> {
   title: string;
   description: string;
   anchorLink: string;
-  categories: CategoryProps[];
   productLink: LinkProps;
   products: Pick<ProductProps, 'id' | 'enabled' | 'sku' | 'name' | 'stock'>[];
 }

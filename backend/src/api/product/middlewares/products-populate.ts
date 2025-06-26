@@ -10,10 +10,10 @@ const populate = {
   },
   features: true,
   categories: {
-    fields: ["label", "documentId"]
+    fields: ["label", "documentId", "slug"]
   },
   brand: {
-    fields: ["name", "documentId"]
+    fields: ["name", "slug", "documentId"]
   }
 }
 

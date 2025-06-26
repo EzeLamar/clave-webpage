@@ -4,9 +4,11 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { CategoriesProps } from "@/types/blocks";
 import { StrapiImage } from "../custom/strapi-image";
+import { useCategories } from "@/context/CategoriesContext";
 
-export const CategoriesSection = ({ title, description, categories, anchorLink, productLink }: CategoriesProps) => {
+export const CategoriesSection = ({ title, description, anchorLink, productLink }: CategoriesProps) => {
   const router = useRouter();
+  const categories = useCategories();
 
   return (
     <section id={anchorLink} className="py-16 md:py-16 bg-gradient-to-br bg-white">
@@ -23,7 +25,7 @@ export const CategoriesSection = ({ title, description, categories, anchorLink, 
             return (
               <button
                 key={category.id}
-                onClick={() => router.push(`${productLink.href}?category=${category.label}`)}
+                onClick={() => router.push(`${productLink.href}?category=${category.slug}`)}
                 className="cursor-pointer group bg-transparent rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col items-stretch text-left focus:outline-none"
               >
                 <div className="relative h-56 w-full overflow-hidden rounded-xl">

@@ -5,16 +5,21 @@ import { ProductCard } from '@/components/ProductCard';
 import { ProductsProps } from '@/types';
 import { useSearchParams } from 'next/navigation';
 import { useProducts } from '@/context/ProductsContext';
+import { useCategories } from '@/context/CategoriesContext';
+import { CategoryProps } from '@/types/base';
 
-export const ProductsSection = ({ title, description, anchorLink, categoryNames }: ProductsProps) => {
+export const ProductsSection = ({ title, description, anchorLink }: ProductsProps) => {
   const products = useProducts();
+  const categories = useCategories();
   const searchParams = useSearchParams();
-  const category = searchParams.get('category');
-  const [activeCategory, setActiveCategory] = useState(category ? category : 'all');
+  const categoryParam = searchParams.get('category');
+  const [activeCategory, setActiveCategory] = useState<CategoryProps | null>(
+    categories.find(category => category.slug === categoryParam) || null
+  );  
 
-  const filteredProducts = activeCategory === 'all'
+  const filteredProducts = !activeCategory
     ? products
-    : products.filter(product => product.categories.some(category => category.label === activeCategory));
+    : products.filter(product => product.categories.some(category => category.slug === activeCategory.slug));
 
   return (
     <section id={anchorLink} className="py-16 md:py-20 bg-gray-50">
@@ -28,24 +33,24 @@ export const ProductsSection = ({ title, description, anchorLink, categoryNames 
 
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           <button
-            onClick={() => setActiveCategory('all')}
-            className={`px-4 py-2 rounded-md transition-colors ${activeCategory === 'all'
+            onClick={() => setActiveCategory(null)}
+            className={`px-4 py-2 rounded-md transition-colors ${activeCategory === null
               ? 'bg-blue-700 text-white'
               : 'bg-white text-gray-700 hover:bg-gray-100'
               }`}
           >
             Todos
           </button>
-          {categoryNames.map(categoryName => (
+          {categories.map(category => (
             <button
-              key={categoryName}
-              onClick={() => setActiveCategory(categoryName)}
-              className={`px-4 py-2 rounded-md transition-colors ${activeCategory === categoryName
+              key={category.slug}
+              onClick={() => setActiveCategory(category)}
+              className={`px-4 py-2 rounded-md transition-colors ${activeCategory?.slug === category.slug
                 ? 'bg-blue-700 text-white'
                 : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}
             >
-              {categoryName}
+              {category.label}
             </button>))}
         </div>
 
@@ -63,7 +68,7 @@ export const ProductsSection = ({ title, description, anchorLink, categoryNames 
                   animationFillMode: 'forwards'
                 }}
               >
-                <ProductCard {...product}  />
+                <ProductCard {...product} />
               </div>
             ))}
           </div>

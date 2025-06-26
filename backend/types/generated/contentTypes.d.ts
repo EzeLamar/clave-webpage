@@ -393,6 +393,7 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -427,6 +428,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'label'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -591,6 +593,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     sku: Schema.Attribute.UID<'name'>;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     stock: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<

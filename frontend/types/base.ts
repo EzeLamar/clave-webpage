@@ -36,6 +36,7 @@ export interface LinkProps {
   export interface ProductProps {
     id: number;
     enabled: boolean;
+    slug: string;
     sku: string;
     name: string;
     description: string;
@@ -51,6 +52,7 @@ export interface LinkProps {
   export interface CategoryProps {
     id: number;
     enabled: boolean;
+    slug: string;
     name: string;
     description: string;
     label: string;
