@@ -40,7 +40,8 @@ const populate = {
           productLink: true,
         }
       },
-      "blocks.opinions": true
+      "blocks.opinions": true,
+      "blocks.product-details": true,
     }
   }
 };

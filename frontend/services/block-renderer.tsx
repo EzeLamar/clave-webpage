@@ -1,6 +1,6 @@
 import type { Block } from "@/types";
 
-import { AboutUs, Hero, ProductsSection, ContactSection, CategoriesSection, Opinions } from "@/components/blocks";
+import { AboutUs, Hero, ProductsSection, ContactSection, CategoriesSection, Opinions, ProductDetails } from "@/components/blocks";
 
 export async function blockRenderer(block: Block, index: number) {
   if (!block.show) return null;
@@ -16,9 +16,10 @@ export async function blockRenderer(block: Block, index: number) {
       return <ProductsSection {...block} key={index} />;
     case "blocks.contact":
       return <ContactSection {...block} key={index} />;
-    case "blocks.categories": {
+    case "blocks.categories":
       return <CategoriesSection {...block} key={index} />;
-    }
+    case "blocks.product-details":
+      return <ProductDetails  {...block} key={index} />
     default:
       return null;
   }

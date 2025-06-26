@@ -497,6 +497,7 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
         'blocks.contact',
         'blocks.categories',
         'blocks.opinions',
+        'blocks.product-details',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -529,7 +530,16 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['blocks.products', 'blocks.markdown', 'blocks.hero', 'blocks.about-us']
+      [
+        'blocks.products',
+        'blocks.markdown',
+        'blocks.hero',
+        'blocks.about-us',
+        'blocks.opinions',
+        'blocks.contact',
+        'blocks.categories',
+        'blocks.product-details',
+      ]
     > &
       Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;

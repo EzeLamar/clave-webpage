@@ -28,7 +28,8 @@
         "blocks.markdown",
         "blocks.contact",
         "blocks.categories",
-        "blocks.opinions"
+        "blocks.opinions",
+        "blocks.product-details"
       ]
     }
   }

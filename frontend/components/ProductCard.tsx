@@ -27,7 +27,7 @@ export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
             src={images[0].url || ''}
             alt={images[0].alternativeText}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
           />
         </Link>
         {discount > 0 && (

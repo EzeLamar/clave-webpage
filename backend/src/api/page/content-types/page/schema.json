@@ -30,7 +30,11 @@
         "blocks.products",
         "blocks.markdown",
         "blocks.hero",
-        "blocks.about-us"
+        "blocks.about-us",
+        "blocks.opinions",
+        "blocks.contact",
+        "blocks.categories",
+        "blocks.product-details"
       ],
       "required": true
     },
