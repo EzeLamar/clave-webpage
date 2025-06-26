@@ -1,16 +1,12 @@
+import { DynamicPageProvider } from '@/context/DynamicPageContext';
 import strapiApi from '@/services/api';
 import { blockRenderer } from '@/services/block-renderer';
+import { DynamicPageProps } from '@/types/base';
 import { Block } from '@/types/blocks';
 import { notFound } from 'next/navigation';
 
-type Page = {
-    title: string;
-    blocks: Block[];
-    slug: string;
-};
-
-async function getPageBySlug(slug: string): Promise<Page | null> {
-    const res = await strapiApi.get(`/api/pages?filters[slug][$eq]=${slug}`);
+async function getPageBySlug(slug: string[]): Promise<DynamicPageProps | null> {
+    const res = await strapiApi.get(`/api/pages?filters[slug][$eq]=${slug[0]}`);
     // @ts-expect-error - Strapi API response type is not properly typed
     const data = res.data;
 
@@ -19,17 +15,13 @@ async function getPageBySlug(slug: string): Promise<Page | null> {
     }
 
     const page = data[0];
-    return {
-        title: page.title,
-        blocks: page.blocks,
-        slug: page.slug,
-    };
+    return page;
 }
 
 export default async function DynamicPage({
     params
 }: {
-    params: Promise<{ slug: string }>
+    params: Promise<{ slug: string[] }>
 }) {
     const { slug } = await params;
     const page = await getPageBySlug(slug);
@@ -40,7 +32,9 @@ export default async function DynamicPage({
 
     return (
         <main className="overflow-x-hidden">
-            {page.blocks.map((block: Block, index: number) => blockRenderer(block, index))}
+            <DynamicPageProvider dynamicPage={page}>
+                {page.blocks.map((block: Block, index: number) => blockRenderer(block, index))}
+            </DynamicPageProvider>
         </main>
     );
 }

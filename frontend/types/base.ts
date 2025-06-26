@@ -1,4 +1,5 @@
 import { IconNames } from "@/components/custom/icon";
+import { Block } from "./blocks";
 
 export interface LinkProps {
     id: number;
@@ -66,4 +67,14 @@ export interface LinkProps {
     email: string;
     city: string;
     postalCode: string;
+  }
+
+  export interface DynamicPageProps {
+    id: number;
+    enabled: boolean;
+    slug: string;
+    detailSlug?: string;
+    title: string;
+    description: string;
+    blocks: Block[];
   }

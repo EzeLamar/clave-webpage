@@ -8,15 +8,21 @@ import { formatCurrency } from '@/lib/currency';
 import { Badge } from '@/components/ui/badge';
 import ContactButton from './ContactButton';
 
-export const ProductCard = ({ id, slug, name, images, features, price, discount }: ProductProps) => {
-  console.log("slug", slug);
+interface ProductCardProps {
+  pageSlug: string;
+  product: ProductProps;
+}
+
+export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
+  const { id, slug, name, images, features, price, discount } = product;
+
   return (
     <div
       key={id}
       className="bg-card rounded-lg overflow-hidden shadow-sm group flex flex-col border border-border h-full"
     >
       <div className="relative h-64 overflow-hidden">
-        <Link href={`/products/${slug}`}>
+        <Link href={`/${pageSlug}/${slug}`}>
           <StrapiImage
             src={images[0].url || ''}
             alt={images[0].alternativeText}

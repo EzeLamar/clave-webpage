@@ -7,15 +7,17 @@ import { useSearchParams } from 'next/navigation';
 import { useProducts } from '@/context/ProductsContext';
 import { useCategories } from '@/context/CategoriesContext';
 import { CategoryProps } from '@/types/base';
+import { useDynamicPage } from '@/context/DynamicPageContext';
 
 export const ProductsSection = ({ title, description, anchorLink }: ProductsProps) => {
   const products = useProducts();
   const categories = useCategories();
+  const page = useDynamicPage();
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('category');
   const [activeCategory, setActiveCategory] = useState<CategoryProps | null>(
     categories.find(category => category.slug === categoryParam) || null
-  );  
+  );
 
   const filteredProducts = !activeCategory
     ? products
@@ -58,20 +60,22 @@ export const ProductsSection = ({ title, description, anchorLink }: ProductsProp
           <div className='flex justify-center h-100'>
             No se encontraron productos
           </div> :
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product, index) => (
-              <div
-                key={index}
-                className="opacity-0 animate-fadeIn"
-                style={{
-                  animationDelay: `${(index % filteredProducts.length) * 150}ms`,
-                  animationFillMode: 'forwards'
-                }}
-              >
-                <ProductCard {...product} />
-              </div>
-            ))}
-          </div>
+          !page?.detailSlug ?
+            <p className='flex justify-center font-bold h-100 text-red-500'>Detail Slug not Found</p> :
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredProducts.map((product, index) => (
+                <div
+                  key={index}
+                  className="opacity-0 animate-fadeIn"
+                  style={{
+                    animationDelay: `${(index % filteredProducts.length) * 150}ms`,
+                    animationFillMode: 'forwards'
+                  }}
+                >
+                  <ProductCard pageSlug={page.detailSlug ?? "slug-not-found"} product={product} />
+                </div>
+              ))}
+            </div>
         }
       </div>
     </section>

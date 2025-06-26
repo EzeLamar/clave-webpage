@@ -22,6 +22,7 @@ export const strapiApi = {
   // Generic GET request
   get: async <T>(endpoint: string) => {
     const response = await api.get<T>(endpoint);
+    console.log(response.data);
     return response.data;
   },
 

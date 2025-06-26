@@ -11,15 +11,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "text"
+    "enabled": {
+      "type": "boolean",
+      "required": true,
+      "default": true
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
+    },
+    "detailSlug": {
+      "type": "string"
     },
     "blocks": {
       "type": "dynamiczone",
@@ -28,7 +31,14 @@
         "blocks.markdown",
         "blocks.hero",
         "blocks.about-us"
-      ]
+      ],
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
