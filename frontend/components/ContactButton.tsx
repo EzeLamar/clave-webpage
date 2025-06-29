@@ -1,14 +1,16 @@
 'use client'
 
 import { useGlobal } from '@/context/GlobalContext';
+import { cn } from '@/lib/utils';
 import React from 'react';
 import { siWhatsapp } from 'simple-icons';
 
 interface ContactButtonProps {
   productName: string;
+  grow?: boolean;
 }
 
-const ContactButton: React.FC<ContactButtonProps> = ({ productName }) => {
+const ContactButton: React.FC<ContactButtonProps> = ({ productName, grow = false}) => {
   const global = useGlobal();
   const generateWhatsAppLink = () => {
     const phoneNumber = global?.company.phone.replace(/\D/g, '');
@@ -23,7 +25,10 @@ const ContactButton: React.FC<ContactButtonProps> = ({ productName }) => {
       href={generateWhatsAppLink()}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md transition-colors duration-300"
+      className={cn(
+        "flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md transition-colors duration-300",
+        grow && "flex-grow-1",
+      )}
     >
       <svg role="img" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
         <path d={siWhatsapp.path} />

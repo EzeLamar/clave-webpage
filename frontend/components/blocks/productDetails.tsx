@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Heart, Share, Star, Truck } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Heart, Share, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -218,61 +218,41 @@ export function ProductDetails({ }: ProductDetailsProps) {
                 </div> */}
             </div>
 
-            <div className="flex items-center gap-3 mt-4">
-              <span className="text-3xl font-bold">{formatCurrency(price - discount * price / 100)}</span>
+            <div>
+              <div className="flex items-center gap-3 mt-4">
+                <span className="text-3xl font-bold">{formatCurrency(price - discount * price / 100)}</span>
+                {discount > 0 && (
+                  <Badge variant="outline" className="text-green-600 border-green-600">
+                    Ahorra {formatCurrency(discount * price / 100)}
+                  </Badge>
+                )}
+              </div>
               {discount > 0 && (
-                <Badge variant="outline" className="text-green-600 border-green-600">
-                  Ahorra {formatCurrency(discount * price / 100)}
-                </Badge>
+                <span className="text-muted-foreground line-through text-lg">
+                  {formatCurrency(price)}
+                </span>
               )}
+
             </div>
-            {discount && (
-              <span className="text-muted-foreground line-through text-lg">
-                {formatCurrency(price)}
-              </span>
-            )}
+
 
             <div>
-              <p className="mb-4">{description}</p>
-              {/* <div className="flex flex-wrap gap-2">
-            {product.tags.map((tag: string) => (
-              <Badge key={tag} variant="secondary">
-              {tag}
-              </Badge>
-              ))}
-              </div> */}
+            </div>
+
+            <div className="space-y-4">
+              {<div className="flex flex-wrap gap-1 text-muted-foreground mb-3">
+                {
+                  product.features.map(feature => (<Badge key={feature.id} variant="outline" className='text-blue-700 border-blue-700'>
+                    {feature.title}
+                  </Badge>))
+                }
+              </div>}
             </div>
 
             <Separator />
 
-            <div className="space-y-4">
-              {/* <div className="flex items-baseline gap-2">
-            <span className="font-medium">Disponibilidad:</span>
-            <span className={cn(
-              "text-sm",
-              product.stock > 0 ? "text-green-600" : "text-red-600"
-              )}>
-              {product.stock > 0 ? `En Stock (${product.stock} disponibles)` : "Agotado"}
-              </span>
-              </div> */}
-              <div className="flex items-center gap-2">
-                <span className="font-medium">Categoría:</span>
-                {/* <span className="text-muted-foreground">{product.categoryId}</span> */}
-              </div>
-            </div>
-
             <div className="flex items-center gap-4 flex-wrap">
-              {/* <CartProductButton
-            productId={product.id}
-            productName={product.name}
-            quantitySelected={quantitySelected}
-            stock={product.stock}
-            cartIsLoading={cartIsLoading}
-            handleAddToCart={handleAddToCart}
-            handleRemoveFromCart={handleRemoveFromCart}
-            showLabel={true}
-            /> */}
-              <ContactButton productName={name} />
+              <ContactButton productName={name} grow />
               <div className="flex items-center gap-3">
                 <Button size="icon" variant="outline">
                   <Heart className="h-5 w-5" />
@@ -313,7 +293,6 @@ export function ProductDetails({ }: ProductDetailsProps) {
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="details">Detalles del Producto</TabsTrigger>
               <TabsTrigger value="shipping">Envío y Devoluciones</TabsTrigger>
-              <TabsTrigger value="reviews">Reseñas</TabsTrigger>
             </TabsList>
 
             <TabsContent value="details" className="mt-6 space-y-4">
@@ -351,78 +330,6 @@ export function ProductDetails({ }: ProductDetailsProps) {
               <h3 className="text-lg font-semibold mt-6">Política de Devoluciones</h3>
               <p>Aceptamos devoluciones dentro de los 30 días posteriores a la entrega para artículos sin usar en su empaque original.</p>
               <p className="text-sm text-muted-foreground mt-2">Tenga en cuenta que los costos de envío para devoluciones son responsabilidad del cliente, a menos que la devolución sea por nuestro error.</p>
-            </TabsContent>
-
-            <TabsContent value="reviews" className="mt-6">
-              {/* <div className="flex items-center mb-6">
-            <div className="mr-4">
-            <div className="text-5xl font-bold">{product.rating}</div>
-            <div className="flex mt-1">
-            {[...Array(5)].map((_, i) => (
-              <Star
-              key={i}
-              className={cn(
-                "h-4 w-4",
-                i < Math.floor(product.rating)
-                ? "text-yellow-400 fill-yellow-400"
-                : "text-gray-300"
-                )}
-                />
-                ))}
-                </div>
-                <div className="text-sm text-muted-foreground mt-1">{product.reviewCount} reviews</div>
-                </div>
-                
-                <div className="flex-1 space-y-2">
-                {[5, 4, 3, 2, 1].map((star) => (
-                  <div key={star} className="flex items-center">
-                  <div className="text-sm w-6">{star}</div>
-                  <div className="w-full h-2 bg-muted rounded-full overflow-hidden mx-2">
-                  <div
-                  className="h-full bg-yellow-400"
-                  style={{
-                    width: `${Math.random() * 100}%`
-                    }}
-                    ></div>
-                    </div>
-                    <div className="text-sm text-muted-foreground w-10">
-                    {Math.floor(Math.random() * 50)}
-                    </div>
-                    </div>
-                    ))}
-                    </div>
-                    </div> */}
-
-              <Button variant="outline" className="w-full mb-8">Escribir una Reseña</Button>
-
-              <div className="space-y-6">
-                {[...Array(3)].map((_, index) => (
-                  <div key={index} className="border-b border-border pb-6 last:border-0">
-                    <div className="flex justify-between mb-2">
-                      <div className="font-medium">Customer {index + 1}</div>
-                      <div className="text-muted-foreground text-sm">
-                        {new Date(Date.now() - Math.random() * 10000000000).toLocaleDateString()}
-                      </div>
-                    </div>
-
-                    <div className="flex mb-2">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={cn(
-                            "h-4 w-4",
-                            i < 4 + (index % 2)
-                              ? "text-yellow-400 fill-yellow-400"
-                              : "text-gray-300"
-                          )}
-                        />
-                      ))}
-                    </div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus.</p>
-                  </div>
-                ))}
-              </div>
             </TabsContent>
           </Tabs>
         </div>
@@ -462,10 +369,11 @@ export function ProductDetails({ }: ProductDetailsProps) {
             </button>
             {/* Image */}
             <div className="flex items-center justify-center w-full h-[60vw] max-h-[80vh]">
-              <img
+              <StrapiImage
                 src={images[selectedImageIndex].url}
                 alt={images[selectedImageIndex].alternativeText || ''}
                 className="object-contain max-h-[80vh] max-w-full rounded-lg bg-white"
+                fill
               />
             </div>
           </div>
