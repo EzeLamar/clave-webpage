@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Heart, Share, Star, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -19,6 +19,35 @@ export function ProductDetails({ }: ProductDetailsProps) {
   const slug = params.slug;
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const product = useProducts().find(product => slug && product.slug === slug[1]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Modal: disable background scroll when open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isModalOpen]);
+
+  // Modal: handle Esc key to close
+  useEffect(() => {
+    if (!isModalOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsModalOpen(false);
+      if (e.key === 'ArrowLeft') {
+        setSelectedImageIndex((prev) => (prev > 0 ? prev - 1 : (product?.images.length || 1) - 1));
+      }
+      if (e.key === 'ArrowRight') {
+        setSelectedImageIndex((prev) => (prev < (product?.images.length || 1) - 1 ? prev + 1 : 0));
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isModalOpen, product?.images.length]);
 
   if (!product) {
     return <div>Product not found</div>
@@ -41,59 +70,126 @@ export function ProductDetails({ }: ProductDetailsProps) {
       <div className="container mx-auto px-4 md:px-6">
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Product Images */}
-          <div className="space-y-4">
-            <div className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden border border-border">
-              <StrapiImage
-                src={images[selectedImageIndex].url}
-                alt={images[selectedImageIndex].alternativeText}
-                fill
-                className="object-contain"
-              />
-
-              {discount > 0 && (
-                <Badge variant="destructive" className="absolute top-4 right-4">
-                  {discount}% OFF
-                </Badge>
-              )}
-
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-background/80 backdrop-blur-sm"
-                onClick={handlePrevImage}
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-
-              <Button
-                variant="outline"
-                size="icon"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-background/80 backdrop-blur-sm"
-                onClick={handleNextImage}
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
+          {/* Product Images Responsive Layout */}
+          <div className="flex flex-col lg:flex-row gap-4 w-full">
+            {/* Vertical thumbnails (desktop) */}
+            <div className="hidden lg:flex flex-col gap-2 w-16">
+              {images.slice(0, 7).map((image, index) => {
+                if (index === 6 && images.length > 7) {
+                  return (
+                    <button
+                      key={index}
+                      className={cn(
+                        "relative aspect-square rounded-md overflow-hidden flex items-center justify-center bg-muted text-lg font-semibold text-primary border border-border cursor-pointer",
+                        selectedImageIndex >= index && "ring-2 ring-primary"
+                      )}
+                      onMouseEnter={() => setSelectedImageIndex(index)}
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      +{images.length - 6}
+                    </button>
+                  );
+                }
+                return (
+                  <button
+                    key={index}
+                    className={cn(
+                      "relative aspect-square rounded-md overflow-hidden border border-border",
+                      selectedImageIndex === index && "ring-2 ring-primary"
+                    )}
+                    onMouseEnter={() => setSelectedImageIndex(index)}
+                  >
+                    <StrapiImage
+                      src={image.url}
+                      alt={image.alternativeText}
+                      fill
+                      className="object-cover"
+                    />
+                  </button>
+                );
+              })}
             </div>
 
-            <div className="grid grid-cols-4 gap-4">
-              {images.map((image, index) => (
-                <button
-                  key={index}
-                  className={cn(
-                    "relative aspect-square rounded-md overflow-hidden",
-                    selectedImageIndex === index && "ring-2 ring-primary"
-                  )}
-                  onClick={() => setSelectedImageIndex(index)}
+            {/* Main image (always visible, centered on tablet) */}
+            <div className="flex-1 flex flex-col items-center">
+              <div
+                className="relative h-[400px] md:h-[500px] w-full rounded-lg overflow-hidden border border-border cursor-zoom-in"
+              >
+                {/* Badge X/Y */}
+                <Badge className="absolute top-4 left-4 z-10 bg-gray-100 text-primary font-semibold px-3 py-1">
+                  {selectedImageIndex + 1}/{images.length}
+                </Badge>
+                <div
+                  onClick={() => setIsModalOpen(true)}
                 >
                   <StrapiImage
-                    src={image.url}
-                    alt={image.alternativeText}
+                    src={images[selectedImageIndex].url}
+                    alt={images[selectedImageIndex].alternativeText}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                   />
-                </button>
-              ))}
+                </div>
+
+                {discount > 0 && (
+                  <Badge variant="destructive" className="absolute top-4 right-4">
+                    {discount}% OFF
+                  </Badge>
+                )}
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-background/80 backdrop-blur-sm z-20"
+                  onClick={handlePrevImage}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-background/80 backdrop-blur-sm z-20"
+                  onClick={handleNextImage}
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+
+              {/* Horizontal thumbnails (tablet only) */}
+              <div className="hidden md:flex lg:hidden flex-row gap-2 w-full py-2 mt-2">
+                {images.slice(0, 5).map((image, index) => {
+                  if (index === 4 && images.length > 5) {
+                    return (
+                      <button
+                        key={index}
+                        className={cn(
+                          "relative min-w-[56px] aspect-square rounded-md overflow-hidden flex items-center justify-center bg-muted text-lg font-semibold text-primary border border-border",
+                          selectedImageIndex >= index && "ring-2 ring-primary"
+                        )}
+                        onClick={() => setSelectedImageIndex(index)}
+                      >
+                        +{images.length - 4}
+                      </button>
+                    );
+                  }
+                  return (
+                    <button
+                      key={index}
+                      className={cn(
+                        "relative min-w-[56px] aspect-square rounded-md overflow-hidden border border-border",
+                        selectedImageIndex === index && "ring-2 ring-primary"
+                      )}
+                      onClick={() => setSelectedImageIndex(index)}
+                    >
+                      <StrapiImage
+                        src={image.url}
+                        alt={image.alternativeText}
+                        fill
+                        className="object-cover"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -331,6 +427,50 @@ export function ProductDetails({ }: ProductDetailsProps) {
           </Tabs>
         </div>
       </div>
+
+      {/* Modal for fullscreen image */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80" onClick={() => setIsModalOpen(false)}>
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-6 text-white text-3xl z-10 cursor-pointer"
+            onClick={() => setIsModalOpen(false)}
+            aria-label="Cerrar"
+          >
+            &times;
+          </button>
+          {/* X/Y badge */}
+          <span className="absolute top-4 left-4 z-10 bg-white/80 text-black font-semibold px-3 py-1 rounded">
+            {selectedImageIndex + 1}/{images.length}
+          </span>
+          <div className="relative max-w-3xl w-full max-h-[90vh] flex flex-col items-center" onClick={e => e.stopPropagation()}>
+            {/* Prev button */}
+            <button
+              className="absolute left-2 top-1/2 -translate-y-1/2 text-white text-4xl z-10 bg-black/50 rounded-full p-2 hover:bg-black/80 cursor-pointer"
+              onClick={e => { e.stopPropagation(); handlePrevImage(); }}
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="h-8 w-8" />
+            </button>
+            {/* Next button */}
+            <button
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-white text-4xl z-10 bg-black/50 rounded-full p-2 hover:bg-black/80 cursor-pointer"
+              onClick={e => { e.stopPropagation(); handleNextImage(); }}
+              aria-label="Siguiente"
+            >
+              <ChevronRight className="h-8 w-8" />
+            </button>
+            {/* Image */}
+            <div className="flex items-center justify-center w-full h-[60vw] max-h-[80vh]">
+              <img
+                src={images[selectedImageIndex].url}
+                alt={images[selectedImageIndex].alternativeText || ''}
+                className="object-contain max-h-[80vh] max-w-full rounded-lg bg-white"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
