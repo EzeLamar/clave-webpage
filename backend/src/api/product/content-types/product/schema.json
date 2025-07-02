@@ -11,32 +11,22 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "sku": {
-      "type": "uid",
-      "targetField": "name"
-    },
     "enabled": {
       "type": "boolean",
       "required": true,
       "default": true
-    },
-    "name": {
-      "type": "string",
-      "required": true
     },
     "slug": {
       "type": "uid",
       "targetField": "name",
       "required": true
     },
-    "brand": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::brand.brand",
-      "inversedBy": "products"
+    "name": {
+      "type": "string",
+      "required": true
     },
-    "price": {
-      "type": "decimal",
+    "description": {
+      "type": "blocks",
       "required": true
     },
     "images": {
@@ -47,6 +37,10 @@
         "images",
         "files"
       ]
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
     },
     "discount": {
       "type": "integer",
@@ -61,9 +55,15 @@
       "default": 0,
       "min": 0
     },
-    "description": {
-      "type": "text",
-      "required": true
+    "sku": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
     },
     "categories": {
       "type": "relation",
@@ -72,9 +72,13 @@
       "mappedBy": "products"
     },
     "features": {
-      "type": "component",
-      "component": "shared.item",
-      "repeatable": true
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::feature.feature",
+      "mappedBy": "products"
+    },
+    "shipmentDescription": {
+      "type": "blocks"
     }
   }
 }

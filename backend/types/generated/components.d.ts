@@ -7,7 +7,7 @@ export interface BlocksAboutUs extends Struct.ComponentSchema {
   };
   attributes: {
     anchorLink: Schema.Attribute.String;
-    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     items: Schema.Attribute.Component<'shared.item', true> &
       Schema.Attribute.Required;
@@ -25,12 +25,13 @@ export interface BlocksCategories extends Struct.ComponentSchema {
   };
   attributes: {
     anchorLink: Schema.Attribute.String;
-    description: Schema.Attribute.Text;
-    productLink: Schema.Attribute.Component<'shared.link', false>;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    productLink: Schema.Attribute.Component<'shared.link', false> &
+      Schema.Attribute.Required;
     show: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -44,7 +45,7 @@ export interface BlocksContact extends Struct.ComponentSchema {
     attentionText: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Lunes a Viernes de 9:00 a 18:00 hrs. S\u00E1bados de 10:00 a 14:00 hrs.'>;
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
     show: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
@@ -63,7 +64,7 @@ export interface BlocksHero extends Struct.ComponentSchema {
   };
   attributes: {
     anchorLink: Schema.Attribute.String;
-    description: Schema.Attribute.RichText & Schema.Attribute.Required;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
     images: Schema.Attribute.Media<'images' | 'files' | 'videos', true> &
       Schema.Attribute.Required;
     items: Schema.Attribute.Component<'shared.item', true> &

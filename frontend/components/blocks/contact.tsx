@@ -5,6 +5,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import { siWhatsapp } from 'simple-icons';
 import { ContactProps } from '@/types/blocks';
 import { useGlobal } from '@/context/GlobalContext';
+import { BlocksRenderer } from '@/services/block-renderer';
 
 export const ContactSection = ({
   title,
@@ -30,9 +31,9 @@ export const ContactSection = ({
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            {description}
-          </p>
+          <div className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <BlocksRenderer content={description}/>
+          </div>
         </div>
 
         <div className="max-w-5xl mx-auto">

@@ -4,6 +4,7 @@ import React from 'react';
 import { AboutUsProps } from '@/types/blocks';
 import Icon from '@/components/custom/icon';
 import { StrapiImage } from '../custom/strapi-image';
+import { BlocksRenderer } from '@/services/block-renderer';
 
 export const AboutUs = ({
   title,
@@ -27,9 +28,9 @@ export const AboutUs = ({
 
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{title}</h2>
-            <p className="text-gray-700 mb-6">
-              {description}
-            </p>
+            <div className="text-gray-700 mb-6">
+              <BlocksRenderer content={description}/>
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {items.map((item) => (

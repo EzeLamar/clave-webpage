@@ -1,4 +1,4 @@
-import { LinkProps, ImageProps, ItemProps, ProductProps } from "./base";
+import { LinkProps, ImageProps, ItemProps, ProductProps, RootNode } from "./base";
 
 type ComponentType =
   | "blocks.hero"
@@ -34,7 +34,7 @@ export type Block =
 export interface HeroProps extends Base<"blocks.hero"> {
   show: boolean;
   title: string;
-  description: string;
+  description: RootNode[];
   navLinks: LinkProps[];
   images: ImageProps[];
   anchorLink: string;
@@ -66,7 +66,7 @@ export interface HeadingProps extends Base<"blocks.heading"> {
 export interface AboutUsProps extends Base<"blocks.about-us"> {
   show: boolean;
   title: string;
-  description: string;
+  description: RootNode[];
   image: ImageProps;
   items: ItemProps[];
   anchorLink: string;
@@ -84,7 +84,7 @@ export interface ContactProps extends Base<"blocks.contact"> {
   show: boolean;
   title: string;
   anchorLink: string;
-  description: string;
+  description: RootNode[];
   whatsappMessage: string;
   attentionText: string;
   showPhone: boolean;
@@ -95,7 +95,7 @@ export interface ContactProps extends Base<"blocks.contact"> {
 export interface CategoriesProps extends Base<"blocks.categories"> {
   show: boolean;
   title: string;
-  description: string;
+  description: RootNode[];
   anchorLink: string;
   productLink: LinkProps;
   products: Pick<ProductProps, 'id' | 'enabled' | 'sku' | 'name' | 'stock'>[];

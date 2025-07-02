@@ -60,15 +60,16 @@ export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
         <Link href={`/products/${slug}`} className="group-hover:text-primary transition-colors">
           <h3 className="font-medium mb-1 line-clamp-1">{name}</h3>
         </Link>
-       
+
         {<div className="flex flex-wrap gap-1 text-muted-foreground mb-3">
           {
-            features.map(feature => (<Badge key={feature.id} variant="outline" className='text-blue-700 border-blue-700'>
-              #{feature.title}
-            </Badge>))
+            features.map(feature => (
+              <Badge key={feature.slug} variant="outline" className='text-blue-700 border-blue-700 hover:text-white hover:bg-blue-700 cursor-pointer'>
+                {feature.name}
+              </Badge>))
           }
         </div>}
-        
+
 
         <div className="flex items-center justify-between mt-auto">
           <div className="flex flex-col text-center">

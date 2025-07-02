@@ -10,6 +10,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { BlocksRenderer } from '@/services/block-renderer';
 
 export const Hero = ({
   title,
@@ -43,9 +44,9 @@ export const Hero = ({
                 title
               )}
             </h1>
-            <p className="text-lg text-gray-700 mb-8">
-              {description}
-            </p>
+            <div className="text-lg text-gray-700 mb-8">
+              <BlocksRenderer content={description}/>
+            </div>
 
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
               {navLinks.map((link) => {

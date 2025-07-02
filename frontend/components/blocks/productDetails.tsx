@@ -13,6 +13,7 @@ import { useProducts } from '@/context/ProductsContext';
 import { StrapiImage } from '../custom/strapi-image';
 import { useParams } from 'next/navigation';
 import ContactButton from '../ContactButton';
+import { BlocksRenderer } from '@/services/block-renderer';
 
 export function ProductDetails({ }: ProductDetailsProps) {
   const params = useParams();
@@ -53,7 +54,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
     return <div>Product not found</div>
   }
 
-  const { name, images, discount, price, description } = product;
+  const { name, images, discount, price, description, shipmentDescription } = product;
 
   // const router = useRouter();
 
@@ -242,9 +243,10 @@ export function ProductDetails({ }: ProductDetailsProps) {
             <div className="space-y-4">
               {<div className="flex flex-wrap gap-1 text-muted-foreground mb-3">
                 {
-                  product.features.map(feature => (<Badge key={feature.id} variant="outline" className='text-blue-700 border-blue-700'>
-                    {feature.title}
-                  </Badge>))
+                  product.features.map(feature => (
+                    <Badge key={feature.slug} variant="outline" className='text-blue-700 border-blue-700 hover:text-white hover:bg-blue-700 cursor-pointer'>
+                      {feature.name}
+                    </Badge>))
                 }
               </div>}
             </div>
@@ -290,27 +292,17 @@ export function ProductDetails({ }: ProductDetailsProps) {
 
           {/* Product Details Tabs */}
           <Tabs defaultValue="details" className="col-span-1 md:col-span-2 mb-12">
-            <TabsList className="grid w-full grid-cols-3">
+            <TabsList className={cn("grid w-full", shipmentDescription ? "grid-cols-2": "grid-cols-1")}>
               <TabsTrigger value="details">Detalles del Producto</TabsTrigger>
-              <TabsTrigger value="shipping">Envío y Devoluciones</TabsTrigger>
+              {shipmentDescription && <TabsTrigger value="shipping">Envío y Devoluciones</TabsTrigger>}
             </TabsList>
 
             <TabsContent value="details" className="mt-6 space-y-4">
-              <h3 className="text-lg font-semibold">Descripción</h3>
-              <p>{description}</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.</p>
-
-              <h3 className="text-lg font-semibold mt-6">Características</h3>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Materiales de alta calidad que garantizan durabilidad y longevidad</li>
-                <li>Diseñado para máxima comodidad y uso diario</li>
-                <li>Diseño versátil que se adapta a muchas ocasiones y estilos</li>
-                <li>Fácil de mantener y limpiar</li>
-              </ul>
+              <BlocksRenderer content={description} />
             </TabsContent>
-
-            <TabsContent value="shipping" className="mt-6 space-y-4">
-              <h3 className="text-lg font-semibold">Información de Envío</h3>
+            {shipmentDescription && <TabsContent value="shipping" className="mt-6 space-y-4">
+              <BlocksRenderer content={shipmentDescription}/>
+              {/* <h3 className="text-lg font-semibold">Información de Envío</h3>
               <p>Enviamos a la mayoría de los países del mundo. Los tiempos y costos de envío pueden variar según la ubicación.</p>
 
               <div className="space-y-4 mt-4">
@@ -329,8 +321,8 @@ export function ProductDetails({ }: ProductDetailsProps) {
 
               <h3 className="text-lg font-semibold mt-6">Política de Devoluciones</h3>
               <p>Aceptamos devoluciones dentro de los 30 días posteriores a la entrega para artículos sin usar en su empaque original.</p>
-              <p className="text-sm text-muted-foreground mt-2">Tenga en cuenta que los costos de envío para devoluciones son responsabilidad del cliente, a menos que la devolución sea por nuestro error.</p>
-            </TabsContent>
+              <p className="text-sm text-muted-foreground mt-2">Tenga en cuenta que los costos de envío para devoluciones son responsabilidad del cliente, a menos que la devolución sea por nuestro error.</p> */}
+            </TabsContent>}
           </Tabs>
         </div>
       </div>
