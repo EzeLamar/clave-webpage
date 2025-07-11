@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { ArticleProps } from "@/types/base";
 import { StrapiImage } from "./custom/strapi-image";
-import { BlocksRenderer } from "@/services/block-renderer";
 
 interface ArticleCardProps {
+  slug: string;
   article: ArticleProps;
 }
 
@@ -25,31 +25,14 @@ function extractTextFromDescription(description: ArticleProps['description']): s
   return text;
 }
 
-// Helper function to get the first image from description
-function getFirstImageFromDescription(description: ArticleProps['description']): { url: string; alt: string | null } | null {
-  if (!description || !Array.isArray(description)) return null;
-  
-  for (const node of description) {
-    if (node.type === 'image' && node.image) {
-      return {
-        url: node.image.url,
-        alt: node.image.alternativeText
-      };
-    }
-  }
-  return null;
-}
-
-export function ArticleCard({ article }: ArticleCardProps) {
+export function ArticleCard({ slug, article }: ArticleCardProps) {
   const descriptionText = extractTextFromDescription(article.description);
   const truncatedDescription = descriptionText.length > 150 
     ? descriptionText.substring(0, 150) + '...' 
     : descriptionText;
   
-  const firstImage = getFirstImageFromDescription(article.description);
   const articleImage = article.images && article.images.length > 0 
-    ? article.images[0] 
-    : firstImage;
+    ? article.images[0] : null;
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -58,7 +41,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
         <div className="relative h-48 overflow-hidden">
           <StrapiImage
             src={articleImage.url}
-            alt={articleImage.alt}
+            alt={articleImage.alternativeText || ''}
             fill
             className="object-cover"
           />
@@ -81,7 +64,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
         
         {/* Read More Link */}
         <Link
-          href={`/articles/${article.slug}`}
+          href={`/${slug}/${article.slug}`}
           className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-200"
         >
           Leer más

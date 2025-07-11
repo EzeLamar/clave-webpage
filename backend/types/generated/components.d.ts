@@ -41,6 +41,7 @@ export interface BlocksArticles extends Struct.ComponentSchema {
   attributes: {
     anchorLink: Schema.Attribute.String;
     description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    detailSlug: Schema.Attribute.String & Schema.Attribute.Required;
     show: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;

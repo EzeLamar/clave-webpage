@@ -6,7 +6,7 @@ import { BlocksRenderer } from "@/services/block-renderer";
 import { useArticles } from "@/context/ArticlesContext";
 import { ArticlesCarousel } from "./ArticlesCarousel";
 
-export const ArticlesSection = ({ title, description, anchorLink }: ArticlesProps) => {
+export const ArticlesSection = ({ title, description, anchorLink, detailSlug }: ArticlesProps) => {
   const articles = useArticles();
 
   return (
@@ -20,7 +20,7 @@ export const ArticlesSection = ({ title, description, anchorLink }: ArticlesProp
             </div>
           </div>
         )}
-        <ArticlesCarousel articles={articles.filter(article => article.show)} />
+        <ArticlesCarousel slug={detailSlug} articles={articles.filter(article => article.show)} />
       </div>
     </section>
   );

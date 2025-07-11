@@ -109,7 +109,8 @@ export interface ArticlesProps extends Base<"blocks.articles"> {
   show: boolean;
   title: string;
   description: RootNode[];
-  anchorLink: string;
+  detailSlug: string;
+  anchorLink?: string;
 }
 
 export interface OpinionsProps extends Base<"blocks.opinions"> {

@@ -1,13 +1,14 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArticleProps } from "@/types/base";
 import { ArticleCard } from "../ArticleCard";
 
 interface ArticlesCarouselProps {
+  slug: string;
   articles: ArticleProps[];
 }
 
-export const ArticlesCarousel: React.FC<ArticlesCarouselProps> = ({ articles }) => {
+export const ArticlesCarousel: React.FC<ArticlesCarouselProps> = ({ slug, articles }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     containScroll: "trimSnaps",
@@ -40,7 +41,7 @@ export const ArticlesCarousel: React.FC<ArticlesCarouselProps> = ({ articles }) 
         <div className="flex gap-8">
           {articles.map((article) => (
             <div className="min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.3333%] px-1" key={article.id}>
-              <ArticleCard article={article} />
+              <ArticleCard slug={slug} article={article} />
             </div>
           ))}
         </div>
