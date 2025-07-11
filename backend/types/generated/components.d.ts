@@ -18,6 +18,21 @@ export interface BlocksAboutUs extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksArticleDetails extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_article_details';
+  info: {
+    displayName: 'Article Details';
+  };
+  attributes: {
+    anchorLink: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    show: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface BlocksArticles extends Struct.ComponentSchema {
   collectionName: 'components_blocks_articles';
   info: {
@@ -340,6 +355,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blocks.about-us': BlocksAboutUs;
+      'blocks.article-details': BlocksArticleDetails;
       'blocks.articles': BlocksArticles;
       'blocks.categories': BlocksCategories;
       'blocks.contact': BlocksContact;

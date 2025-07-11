@@ -43,6 +43,7 @@ const populate = {
       "blocks.opinions": true,
       "blocks.product-details": true,
       "blocks.articles": true,
+      "blocks.article-details": true,
     }
   }
 };

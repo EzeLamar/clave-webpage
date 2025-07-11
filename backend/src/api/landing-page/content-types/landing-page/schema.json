@@ -30,7 +30,8 @@
         "blocks.categories",
         "blocks.opinions",
         "blocks.product-details",
-        "blocks.articles"
+        "blocks.articles",
+        "blocks.article-details"
       ]
     }
   }

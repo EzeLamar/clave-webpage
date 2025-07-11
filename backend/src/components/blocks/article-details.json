@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blocks_article_details",
+  "info": {
+    "displayName": "Article Details"
+  },
+  "options": {},
+  "attributes": {
+    "show": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "anchorLink": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

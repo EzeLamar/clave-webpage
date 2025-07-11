@@ -1,6 +1,7 @@
 import type { Block } from "@/types";
 
 import { AboutUs, Hero, ProductsSection, ContactSection, CategoriesSection, Opinions, ProductDetails, ArticlesSection } from "@/components/blocks";
+import { ArticleDetailsSection } from "@/components/blocks/articleDetails";
 import { BlocksRenderer as StrapiBlocksRenderer } from "@strapi/blocks-react-renderer";
 import Link from "next/link";
 import { RootNode } from "@/types/base";
@@ -25,6 +26,8 @@ export async function blockRenderer(block: Block, index: number) {
       return <ProductDetails  {...block} key={index} />
     case "blocks.articles":
       return <ArticlesSection {...block} key={index} />
+    case "blocks.article-details":
+      return <ArticleDetailsSection {...block} key={index} />
     default:
       return null;
   }

@@ -565,6 +565,7 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
         'blocks.opinions',
         'blocks.product-details',
         'blocks.articles',
+        'blocks.article-details',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -607,6 +608,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.categories',
         'blocks.product-details',
         'blocks.articles',
+        'blocks.article-details',
       ]
     > &
       Schema.Attribute.Required;
