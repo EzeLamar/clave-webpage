@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_blocks_articles",
+  "info": {
+    "displayName": "Articles"
+  },
+  "options": {},
+  "attributes": {
+    "show": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    },
+    "anchorLink": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

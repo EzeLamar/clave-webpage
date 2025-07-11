@@ -29,7 +29,8 @@
         "blocks.contact",
         "blocks.categories",
         "blocks.opinions",
-        "blocks.product-details"
+        "blocks.product-details",
+        "blocks.articles"
       ]
     }
   }

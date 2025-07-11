@@ -7,6 +7,7 @@ import { Header, Footer } from "@/components/global";
 import { GlobalProvider } from "@/context/GlobalContext";
 import { ProductsProvider } from "@/context/ProductsContext";
 import { CategoriesProvider } from "../context/CategoriesContext";
+import { ArticlesProvider } from "@/context/ArticlesContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,8 @@ export default async function RootLayout({
   const { data: products } = await strapiApi.get('/api/products');
   // @ts-expect-error - Strapi API response type is not properly typed
   const { data: categories } = await strapiApi.get('/api/categories');
+  // @ts-expect-error - Strapi API response type is not properly typed
+  const { data: articles } = await strapiApi.get('/api/articles');
 
   return (
     <html lang="en">
@@ -43,11 +46,13 @@ export default async function RootLayout({
         <Header {...global.header} />
         <GlobalProvider global={global}>
           <CategoriesProvider categories={categories}>
+            <ArticlesProvider articles={articles}>
             <ProductsProvider products={products}>
               {children}
               {global.isVisibleContactButton && <FloatingWhatsAppButton />}
               <Footer {...global.footer} />
             </ProductsProvider>
+            </ArticlesProvider>
           </CategoriesProvider>
         </GlobalProvider>
       </body>

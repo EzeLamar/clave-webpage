@@ -166,3 +166,12 @@ export interface LinkProps {
     description: string;
     blocks: Block[];
   }
+
+  export interface ArticleProps {
+    id: number;
+    show: boolean;
+    slug: string;
+    title: string;
+    description: RootNode[];
+    images: ImageProps[];
+  }

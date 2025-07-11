@@ -10,6 +10,7 @@ type ComponentType =
   | "blocks.categories"
   | "blocks.opinions"
   | "blocks.product-details"
+  | "blocks.articles"
 
 interface Base<T extends ComponentType, D extends object = Record<string, unknown>> {
   id: number;
@@ -31,6 +32,7 @@ export type Block =
   | CategoriesProps
   | OpinionsProps
   | ProductDetailsProps
+  | ArticlesProps
 export interface HeroProps extends Base<"blocks.hero"> {
   show: boolean;
   title: string;
@@ -99,6 +101,13 @@ export interface CategoriesProps extends Base<"blocks.categories"> {
   anchorLink: string;
   productLink: LinkProps;
   products: Pick<ProductProps, 'id' | 'enabled' | 'sku' | 'name' | 'stock'>[];
+}
+
+export interface ArticlesProps extends Base<"blocks.articles"> {
+  show: boolean;
+  title: string;
+  description: RootNode[];
+  anchorLink: string;
 }
 
 export interface OpinionsProps extends Base<"blocks.opinions"> {

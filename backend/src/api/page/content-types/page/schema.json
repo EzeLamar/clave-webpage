@@ -34,7 +34,8 @@
         "blocks.opinions",
         "blocks.contact",
         "blocks.categories",
-        "blocks.product-details"
+        "blocks.product-details",
+        "blocks.articles"
       ],
       "required": true
     },
