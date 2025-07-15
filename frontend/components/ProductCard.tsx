@@ -6,7 +6,7 @@ import { StrapiImage } from './custom/strapi-image';
 import Link from 'next/link';
 import { formatCurrency } from '@/lib/currency';
 import { Badge } from '@/components/ui/badge';
-import ContactButton from './ContactButton';
+// import ContactButton from './ContactButton';
 
 interface ProductCardProps {
   pageSlug: string;
@@ -83,7 +83,7 @@ export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
             )}
           </div>
 
-          <ContactButton productName={name} />
+          {/* <ContactButton productName={name} /> */}
         </div>
       </div>
     </div>
