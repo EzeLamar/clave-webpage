@@ -87,7 +87,7 @@ export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
             </span>
         </div> */}
 
-        <Link href={`/products/${slug}`} className="group-hover:text-primary transition-colors">
+        <Link href={`/${pageSlug}/${slug}`} className="group-hover:text-primary transition-colors">
           <h3 className="font-medium mb-1 line-clamp-1">{name}</h3>
         </Link>
 
