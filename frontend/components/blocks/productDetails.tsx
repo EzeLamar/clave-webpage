@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Heart, Share, Truck } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -255,7 +255,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
 
             <div className="flex items-center gap-4 flex-wrap">
               <ContactButton productName={name} grow />
-              <div className="flex items-center gap-3">
+              {/* <div className="flex items-center gap-3">
                 <Button size="icon" variant="outline">
                   <Heart className="h-5 w-5" />
                   <span className="sr-only">Agregar a Favoritos</span>
@@ -265,7 +265,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
                   <span className="sr-only">Compartir Producto</span>
                 </Button>
 
-              </div>
+              </div> */}
             </div>
 
             <div className="bg-accent/50 p-4 rounded-lg space-y-3">
