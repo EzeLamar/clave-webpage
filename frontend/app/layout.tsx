@@ -8,6 +8,7 @@ import { GlobalProvider } from "@/context/GlobalContext";
 import { ProductsProvider } from "@/context/ProductsContext";
 import { CategoriesProvider } from "../context/CategoriesContext";
 import { ArticlesProvider } from "@/context/ArticlesContext";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,6 +56,7 @@ export default async function RootLayout({
             </ArticlesProvider>
           </CategoriesProvider>
         </GlobalProvider>
+        <Analytics/>
       </body>
     </html>
   );
