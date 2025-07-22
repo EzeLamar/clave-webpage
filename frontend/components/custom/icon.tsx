@@ -6,17 +6,17 @@ export type IconNames = "Droplet" | "CheckCircle" | "Shield" | "Award" | "Clock"
 const Icon = ({ icon }: { icon: IconProp }) => {
   switch (icon.name) {
     case "Droplet":
-      return <Droplet className="h-5 w-5 text-blue-600 mr-2" />
+      return <Droplet className="h-5 w-5 text-primary mr-2" />
     case "CheckCircle":
-      return <CheckCircle className="h-5 w-5 text-blue-600 mr-2" />
+      return <CheckCircle className="h-5 w-5 text-primary mr-2" />
     case "Shield":
-      return <Shield className="h-5 w-5 text-blue-600 mr-2" />
+      return <Shield className="h-5 w-5 text-primary mr-2" />
     case "Award":
-      return <Award className="h-5 w-5 text-blue-600 mr-2" />
+      return <Award className="h-5 w-5 text-primary mr-2" />
     case "Clock":
-      return <Clock className="h-5 w-5 text-blue-600 mr-2" />
+      return <Clock className="h-5 w-5 text-primary mr-2" />
     case "ThumbsUp":
-      return <ThumbsUp className="h-5 w-5 text-blue-600 mr-2" />
+      return <ThumbsUp className="h-5 w-5 text-primary mr-2" />
     default:
       return null;
   }

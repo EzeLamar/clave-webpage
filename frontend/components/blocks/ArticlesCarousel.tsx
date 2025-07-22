@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArticleProps } from "@/types/base";
 import { ArticleCard } from "../ArticleCard";
+import { Button } from '@/components/ui/button';
 
 interface ArticlesCarouselProps {
   slug: string;
@@ -47,29 +48,31 @@ export const ArticlesCarousel: React.FC<ArticlesCarouselProps> = ({ slug, articl
         </div>
       </div>
       {/* Left Arrow */}
-      <button
+      <Button
         className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow rounded-full p-2 transition disabled:opacity-30"
         onClick={() => emblaApi && emblaApi.scrollPrev()}
         disabled={!canScrollPrev}
         aria-label="Previous"
         type="button"
+        variant="ghost"
       >
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
-      </button>
+      </Button>
       {/* Right Arrow */}
-      <button
+      <Button
         className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow rounded-full p-2 transition disabled:opacity-30"
         onClick={() => emblaApi && emblaApi.scrollNext()}
         disabled={!canScrollNext}
         aria-label="Next"
         type="button"
+        variant="ghost"
       >
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
-      </button>
+      </Button>
     </div>
   );
 }; 

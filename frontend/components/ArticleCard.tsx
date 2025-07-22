@@ -65,7 +65,7 @@ export function ArticleCard({ slug, article }: ArticleCardProps) {
         {/* Read More Link */}
         <Link
           href={`/${slug}/${article.slug}`}
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-200"
+          className="inline-flex items-center text-primary hover:text-primary/80 font-medium text-sm transition-colors duration-200"
         >
           Leer más
           <svg

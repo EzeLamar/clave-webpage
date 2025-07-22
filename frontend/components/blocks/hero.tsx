@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { BlocksRenderer } from '@/services/block-renderer';
+import { Button } from '../ui/button';
 
 export const Hero = ({
   title,
@@ -28,7 +29,7 @@ export const Hero = ({
   return (
     <section
       id={anchorLink}
-      className="pt-20 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24 bg-gradient-to-br from-blue-50 to-cyan-50"
+      className="pt-20 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24 bg-gradient-to-br from-primary/10 to-primary/5"
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8 items-center">
@@ -37,7 +38,7 @@ export const Hero = ({
               {segmentedTitle.length > 2 ? (
                 <>
                   {segmentedTitle[0]}
-                  <span className="text-blue-700">{segmentedTitle[1]}</span>
+                  <span className="text-primary">{segmentedTitle[1]}</span>
                   {segmentedTitle[2]}
                 </>
               ) : (
@@ -45,7 +46,7 @@ export const Hero = ({
               )}
             </h1>
             <div className="text-lg text-gray-700 mb-8">
-              <BlocksRenderer content={description}/>
+              <BlocksRenderer content={description} />
             </div>
 
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
@@ -53,37 +54,39 @@ export const Hero = ({
                 if (link.isButtonLink) {
                   if (link.type === "PRIMARY") {
                     return (
-                      <a
-                        href={link.href}
-                        key={link.id}
-                      className="bg-blue-700 hover:bg-blue-800 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center"
-                      >
-                        {link.label}
-                      </a>
+                      <Button key={link.id} className='p-6' asChild>
+                        <a
+                          href={link.href}
+                          key={link.id}
+                        >
+                          {link.label}
+                        </a>
+                      </Button>
                     )
                   }
 
                   if (link.type === "SECONDARY") {
                     return (
-                      <a
-                        href={link.href}
-                        key={link.id}
-                        className="bg-white border border-blue-700 text-blue-700 hover:bg-blue-50 font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center"
-                      >
-                        {link.label}
-                      </a>
+                      <Button key={link.id} variant="outline" className='text-primary border-primary p-6' asChild>
+                        <a
+                          href={link.href}
+                          key={link.id}
+                        >
+                          {link.label}
+                        </a>
+                      </Button>
                     )
                   }
                 }
 
                 return (
-                  <a
-                    href={link.href}
-                    key={link.id}
-                    className="bg-blue-700 hover:bg-blue-800 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center"
-                  >
-                    {link.label}
-                  </a>
+                  <Button key={link.id} asChild>
+                    <a
+                      href={link.href}
+                    >
+                      {link.label}
+                    </a>
+                  </Button>
                 )
               })}
             </div>

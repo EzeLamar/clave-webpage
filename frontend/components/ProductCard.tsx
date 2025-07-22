@@ -94,7 +94,7 @@ export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
         {<div className="flex flex-wrap gap-1 text-muted-foreground mb-3">
           {
             features.map(feature => (
-              <Badge key={feature.slug} variant="outline" className='text-blue-700 border-blue-700 hover:text-white hover:bg-blue-700 cursor-pointer'
+              <Badge key={feature.slug} variant="outline" className='text-primary border-primary hover:text-primary-foreground hover:bg-primary cursor-pointer'
                 onClick={() => handleBadgeClick(feature)}>
                 {feature.name}
               </Badge>))

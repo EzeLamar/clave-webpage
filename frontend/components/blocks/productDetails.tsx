@@ -117,7 +117,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
                 className="relative h-[400px] md:h-[500px] w-full rounded-lg overflow-hidden border border-border cursor-zoom-in"
               >
                 {/* Badge X/Y */}
-                <Badge className="absolute top-4 left-4 z-10 bg-gray-100 text-primary font-semibold px-3 py-1">
+                <Badge className="absolute top-4 left-4 z-10 bg-gray-100 text-gray-600 font-semibold px-3 py-1">
                   {selectedImageIndex + 1}/{images.length}
                 </Badge>
                 <div
@@ -244,7 +244,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
               {<div className="flex flex-wrap gap-1 text-muted-foreground mb-3">
                 {
                   product.features.map(feature => (
-                    <Badge key={feature.slug} variant="outline" className='text-blue-700 border-blue-700 hover:text-white hover:bg-blue-700 cursor-pointer'>
+                    <Badge key={feature.slug} variant="outline" className='text-primary border-primary hover:text-primary-foreground hover:bg-primary cursor-pointer'>
                       {feature.name}
                     </Badge>))
                 }

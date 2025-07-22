@@ -65,7 +65,7 @@ export function Opinions({ title }: OpinionsProps) {
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">{title}</h2>
       <div className="relative max-w-4xl mx-auto">
         <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-primary">
-          <Quote className="text-blue-700/50" size={80} />
+          <Quote className="text-primary/50" size={80} />
         </div>
 
         <div className="overflow-hidden relative">
@@ -100,7 +100,7 @@ export function Opinions({ title }: OpinionsProps) {
               className={cn(
                 "h-2 w-2 rounded-full transition-all",
                 index === activeIndex
-                  ? "bg-blue-700 w-4"
+                  ? "bg-primary w-4"
                   : "bg-muted-foreground/30"
               )}
               aria-label={`Go to testimonial ${index + 1}`}

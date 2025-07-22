@@ -71,7 +71,7 @@ export function BlocksRenderer({ content }: BlocksRendererProp) {
           return (
             <Link
               href={url}
-              className="text-blue-500 underline underline-offset-2 hover:text-blue-500/80 transition-colors"
+              className="text-primary hover:underline underline-offset-2 hover:text-primary/80 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
               {...props}

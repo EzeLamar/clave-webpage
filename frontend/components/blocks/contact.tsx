@@ -27,7 +27,7 @@ export const ContactSection = ({
   };
 
   return (
-    <section id={anchorLink} className="py-16 md:py-20 bg-blue-50">
+    <section id={anchorLink} className="py-16 md:py-20 bg-primary/10">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
@@ -41,8 +41,8 @@ export const ContactSection = ({
             <div className="bg-white rounded-lg shadow-md p-6 transition-transform duration-300 hover:transform hover:scale-105">
               {showPhone && (
                 <div className="flex items-center mb-6">
-                  <div className="rounded-full bg-blue-100 p-3 mr-4">
-                    <Phone className="w-6 h-6 text-blue-600" />
+                  <div className="rounded-full bg-primary/10 p-3 mr-4">
+                    <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">Teléfono</h3>
@@ -53,8 +53,8 @@ export const ContactSection = ({
 
               {showEmail && (
                 <div className="flex items-center mb-6">
-                <div className="rounded-full bg-blue-100 p-3 mr-4">
-                  <Mail className="w-6 h-6 text-blue-600" />
+                <div className="rounded-full bg-primary/10 p-3 mr-4">
+                  <Mail className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">Correo electrónico</h3>
@@ -65,8 +65,8 @@ export const ContactSection = ({
 
               {showAddress && (
                 <div className="flex items-center">
-                  <div className="rounded-full bg-blue-100 p-3 mr-4">
-                    <MapPin className="w-6 h-6 text-blue-600" />
+                  <div className="rounded-full bg-primary/10 p-3 mr-4">
+                    <MapPin className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">Ubicación</h3>

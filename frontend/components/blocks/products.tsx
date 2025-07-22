@@ -11,6 +11,7 @@ import { useDynamicPage } from '@/context/DynamicPageContext';
 import { Drawer, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerClose } from '@/components/ui/drawer';
 import { Input } from '@/components/ui/input';
 import { SlidersHorizontal } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export const ProductsSection = ({ title, description, anchorLink }: ProductsProps) => {
   const products = useProducts();
@@ -47,10 +48,10 @@ export const ProductsSection = ({ title, description, anchorLink }: ProductsProp
           <div className="md:hidden mb-4">
             <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
               <DrawerTrigger asChild>
-                <button className="flex gap-2 justify-center px-4 py-2 bg-blue-700 text-white rounded-md w-full" onClick={() => setDrawerOpen(true)}>
+                <Button className="flex gap-2 justify-center px-4 py-2 w-full" onClick={() => setDrawerOpen(true)}>
                   Filtrar
                   <SlidersHorizontal className="h-5 w-5 text-white mr-2" />
-                </button>
+                </Button>
               </DrawerTrigger>
               <DrawerContent className="p-4">
                 <DrawerHeader>
@@ -64,25 +65,27 @@ export const ProductsSection = ({ title, description, anchorLink }: ProductsProp
                   />
                   <div>
                     <div className="font-semibold mb-2">Categorías</div>
-                    <button
+                    <Button
                       onClick={() => setActiveCategory(null)}
-                      className={`block w-full text-left px-3 py-2 rounded-md mb-1 transition-colors ${activeCategory === null ? 'bg-blue-700 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                      variant={activeCategory === null ? 'default' : 'ghost'}
+                      className={`block w-full text-left px-3 py-2 rounded-md mb-1 transition-colors ${activeCategory === null ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
                     >
                       Todas
-                    </button>
+                    </Button>
                     {categories.map(category => (
-                      <button
+                      <Button
                         key={category.slug}
                         onClick={() => setActiveCategory(category)}
-                        className={`block w-full text-left px-3 py-2 rounded-md mb-1 transition-colors ${activeCategory?.slug === category.slug ? 'bg-blue-700 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                        variant={activeCategory?.slug === category.slug ? 'default' : 'ghost'}
+                        className={`block w-full text-left px-3 py-2 rounded-md mb-1 transition-colors ${activeCategory?.slug === category.slug ? 'bg-primary text-primary-foreground' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
                       >
                         {category.label}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </div>
                 <DrawerClose asChild>
-                  <button className="mt-6 w-full px-4 py-2 bg-gray-200 rounded-md">Cerrar</button>
+                  <Button variant='outline' className="mt-6 w-full">Cerrar</Button>
                 </DrawerClose>
               </DrawerContent>
             </Drawer>
@@ -99,20 +102,22 @@ export const ProductsSection = ({ title, description, anchorLink }: ProductsProp
               />
               <div>
                 <div className="font-semibold mb-2">Categorías</div>
-                <button
+                <Button
                   onClick={() => setActiveCategory(null)}
-                  className={`block w-full text-left px-3 py-2 rounded-md mb-1 transition-colors ${activeCategory === null ? 'bg-blue-700 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                  variant={activeCategory === null ? 'default' : 'ghost'}
+                  className={`block w-full text-left px-3 py-2 rounded-md mb-1 transition-colors ${activeCategory === null ? 'bg-primary text-primary-foreground' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
                 >
                   Todas
-                </button>
+                </Button>
                 {categories.map(category => (
-                  <button
+                  <Button
                     key={category.slug}
                     onClick={() => setActiveCategory(category)}
-                    className={`block w-full text-left px-3 py-2 rounded-md mb-1 transition-colors ${activeCategory?.slug === category.slug ? 'bg-blue-700 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                    variant={activeCategory?.slug === category.slug ? 'default' : 'ghost'}
+                    className={`block w-full text-left px-3 py-2 rounded-md mb-1 transition-colors ${activeCategory?.slug === category.slug ? 'bg-primary text-primary-foreground' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
                   >
                     {category.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>

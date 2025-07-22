@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { HeaderProps } from '@/types';
 import { StrapiImage } from '../custom/strapi-image';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +35,7 @@ const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
             <ul className="flex space-x-8">
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <Link href={item.href} className="text-gray-800 hover:text-blue-700 font-medium transition-colors capitalize">
+                  <Link href={item.href} className="text-gray-800 hover:text-primary font-medium transition-colors capitalize">
                     {item.label}
                   </Link>
                 </li>
@@ -42,12 +43,13 @@ const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
             </ul>
           </nav>
 
-          <button
+          <Button
             className="md:hidden text-gray-800"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            variant="ghost"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -59,7 +61,7 @@ const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
               <li key={item.id}>
                 <Link
                   href={item.href}
-                  className="text-gray-800 hover:text-blue-700 font-medium block py-2 transition-colors capitalize"
+                  className="text-gray-800 hover:text-primary font-medium block py-2 transition-colors capitalize"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
