@@ -12,6 +12,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { BlocksRenderer } from '@/services/block-renderer';
 import { Button } from '../ui/button';
+import Link from 'next/link';
 
 export const Hero = ({
   title,
@@ -55,12 +56,12 @@ export const Hero = ({
                   if (link.type === "PRIMARY") {
                     return (
                       <Button key={link.id} className='p-6' asChild>
-                        <a
+                        <Link
                           href={link.href}
                           key={link.id}
                         >
                           {link.label}
-                        </a>
+                        </Link>
                       </Button>
                     )
                   }
@@ -68,12 +69,12 @@ export const Hero = ({
                   if (link.type === "SECONDARY") {
                     return (
                       <Button key={link.id} variant="outline" className='text-primary border-primary p-6' asChild>
-                        <a
+                        <Link
                           href={link.href}
                           key={link.id}
                         >
                           {link.label}
-                        </a>
+                        </Link>
                       </Button>
                     )
                   }

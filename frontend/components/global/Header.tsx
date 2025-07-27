@@ -6,8 +6,11 @@ import { HeaderProps } from '@/types';
 import { StrapiImage } from '../custom/strapi-image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { useGlobal } from '@/context/GlobalContext';
 
 const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
+  const global = useGlobal();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -21,9 +24,11 @@ const Header = ({ logo, navItems }: Readonly<HeaderProps>) => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
-      }`}>
-      <div className="container mx-auto px-4 md:px-6">
+    <header className={cn(
+      'fixed left-0 right-0 z-50 transition-all duration-300',
+      global?.banner && global.banner.enabled ? 'top-10' : 'top-0',
+      isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+    )}>      <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link href={logo.href}>

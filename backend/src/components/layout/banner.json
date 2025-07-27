@@ -5,7 +5,7 @@
   },
   "options": {},
   "attributes": {
-    "isVisible": {
+    "enabled": {
       "type": "boolean",
       "required": true,
       "default": false

@@ -5,6 +5,14 @@ export interface GlobalProps {
   footer: FooterProps;
   company: CompanyProps;
   isVisibleContactButton: boolean;
+  banner?: BannerProps;
+}
+
+export interface BannerProps {
+  enabled: boolean;
+  title: string;
+  description: string;
+  link: LinkProps;
 }
 
 export interface HeaderProps {

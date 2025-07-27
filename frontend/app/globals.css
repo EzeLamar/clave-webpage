@@ -151,6 +151,27 @@ body {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+
+  @keyframes marquee {
+    0% {
+      left: 100%;
+    }
+    100% {
+      left: -100%;
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 15s linear infinite;
+  }
+
+  /* Asegura que el texto del banner no ocupe más de una línea */
+  .alert-banner {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 
 :root {
