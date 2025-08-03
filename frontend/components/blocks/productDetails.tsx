@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Truck } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -14,6 +14,8 @@ import { StrapiImage } from '../custom/strapi-image';
 import { useParams } from 'next/navigation';
 import ContactButton from '../ContactButton';
 import { BlocksRenderer } from '@/services/block-renderer';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import Link from 'next/link';
 
 export function ProductDetails({ }: ProductDetailsProps) {
   const params = useParams();
@@ -67,9 +69,27 @@ export function ProductDetails({ }: ProductDetailsProps) {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-gray-50">
+    <section className="py-16 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
-
+        <Breadcrumb className='mb-4'>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Inicio</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/productos">Productos</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem className='text-primary'>
+              <BreadcrumbPage>{name}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* Product Images Responsive Layout */}
           <div className="flex flex-col lg:flex-row gap-4 w-full">
@@ -268,7 +288,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
               </div> */}
             </div>
 
-            <div className="bg-accent/50 p-4 rounded-lg space-y-3">
+            {/* <div className="bg-accent/50 p-4 rounded-lg space-y-3">
               <div className="flex items-center gap-2">
                 <Truck className="text-primary h-5 w-5" />
                 <span className="text-sm">
@@ -287,12 +307,12 @@ export function ProductDetails({ }: ProductDetailsProps) {
                   Devoluciones fáciles en 30 días
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Product Details Tabs */}
           <Tabs defaultValue="details" className="col-span-1 md:col-span-2 mb-12">
-            <TabsList className={cn("grid w-full", shipmentDescription ? "grid-cols-2": "grid-cols-1")}>
+            <TabsList className={cn("grid w-full", shipmentDescription ? "grid-cols-2" : "grid-cols-1")}>
               <TabsTrigger value="details">Detalles del Producto</TabsTrigger>
               {shipmentDescription && <TabsTrigger value="shipping">Envío y Devoluciones</TabsTrigger>}
             </TabsList>
@@ -301,7 +321,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
               <BlocksRenderer content={description} />
             </TabsContent>
             {shipmentDescription && <TabsContent value="shipping" className="mt-6 space-y-4">
-              <BlocksRenderer content={shipmentDescription}/>
+              <BlocksRenderer content={shipmentDescription} />
               {/* <h3 className="text-lg font-semibold">Información de Envío</h3>
               <p>Enviamos a la mayoría de los países del mundo. Los tiempos y costos de envío pueden variar según la ubicación.</p>
 
