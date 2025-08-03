@@ -14,8 +14,9 @@ import { StrapiImage } from '../custom/strapi-image';
 import { useParams } from 'next/navigation';
 import ContactButton from '../ContactButton';
 import { BlocksRenderer } from '@/services/block-renderer';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Link from 'next/link';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 export function ProductDetails({ }: ProductDetailsProps) {
   const params = useParams();
@@ -73,19 +74,49 @@ export function ProductDetails({ }: ProductDetailsProps) {
       <div className="container mx-auto px-4 md:px-6">
         <Breadcrumb className='mb-4'>
           <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
+            {/* <BreadcrumbItem>
+              <BreadcrumbLink asChild className="text-primary hover:underline hover:text-primary/80">
                 <Link href="/">Inicio</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
+            <BreadcrumbSeparator /> */}
             <BreadcrumbItem>
-              <BreadcrumbLink asChild>
+              <BreadcrumbLink asChild className="text-primary hover:underline hover:text-primary/80">
                 <Link href="/productos">Productos</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
-            <BreadcrumbItem className='text-primary'>
+            {!!product.categories.length &&
+              <>
+                {product.categories.length === 1 ? (
+                  <BreadcrumbLink asChild className="text-primary hover:underline hover:text-primary/80">
+                    <Link href={`/productos?category=${product.categories[0].slug}`}>{product.categories[0].label}</Link>
+                  </BreadcrumbLink>
+                ) : (
+
+                  <BreadcrumbItem>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger className="flex items-center gap-1">
+                        <BreadcrumbEllipsis className="size-4 text-primary" />
+                        <span className="sr-only">Toggle menu</span>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="start">
+                        {product.categories.map(category => (
+                          <DropdownMenuItem key={category.id}>
+                            <BreadcrumbLink asChild className="text-primary hover:underline hover:text-primary/80">
+                              <Link href={`/productos?category=${category.slug}`}>{category.label}</Link>
+                            </BreadcrumbLink>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </BreadcrumbItem>
+                )
+                }
+                <BreadcrumbSeparator />
+              </>
+            }
+            <BreadcrumbItem>
               <BreadcrumbPage>{name}</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
