@@ -25,6 +25,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
   const product = useProducts().find(product => slug && product.slug === slug[1]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+
   // Modal: disable background scroll when open
   useEffect(() => {
     if (isModalOpen) {
@@ -68,6 +69,26 @@ export function ProductDetails({ }: ProductDetailsProps) {
   const handleNextImage = () => {
     setSelectedImageIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
   };
+
+  console.log("Eze", shipmentDescription);
+
+  const hasShipmentDescription = (): boolean => {
+    if (
+      !shipmentDescription ||
+      shipmentDescription.length === 0 ||
+      (
+        shipmentDescription.length === 1 &&
+        Array.isArray(shipmentDescription[0].children) &&
+        shipmentDescription[0].children.length === 1 &&
+        typeof shipmentDescription[0].children[0] === "object" &&
+        "text" in shipmentDescription[0].children[0] &&
+        shipmentDescription[0].children[0].text === ""
+      )
+    ) {
+      return false;
+    }
+    return true;
+  }
 
   return (
     <section className="py-16 md:py-20">
@@ -343,15 +364,15 @@ export function ProductDetails({ }: ProductDetailsProps) {
 
           {/* Product Details Tabs */}
           <Tabs defaultValue="details" className="col-span-1 md:col-span-2 mb-12">
-            <TabsList className={cn("grid w-full", shipmentDescription ? "grid-cols-2" : "grid-cols-1")}>
+            <TabsList className={cn("grid w-full", hasShipmentDescription() ? "grid-cols-2" : "grid-cols-1")}>
               <TabsTrigger value="details">Detalles del Producto</TabsTrigger>
-              {shipmentDescription && <TabsTrigger value="shipping">Envío y Devoluciones</TabsTrigger>}
+              {hasShipmentDescription() && <TabsTrigger value="shipping">Envío y Devoluciones</TabsTrigger>}
             </TabsList>
 
             <TabsContent value="details" className="mt-6 space-y-4">
               <BlocksRenderer content={description} />
             </TabsContent>
-            {shipmentDescription && <TabsContent value="shipping" className="mt-6 space-y-4">
+            {shipmentDescription && hasShipmentDescription() && <TabsContent value="shipping" className="mt-6 space-y-4">
               <BlocksRenderer content={shipmentDescription} />
               {/* <h3 className="text-lg font-semibold">Información de Envío</h3>
               <p>Enviamos a la mayoría de los países del mundo. Los tiempos y costos de envío pueden variar según la ubicación.</p>
