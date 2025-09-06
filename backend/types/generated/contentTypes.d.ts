@@ -666,7 +666,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
     features: Schema.Attribute.Relation<'manyToMany', 'api::feature.feature'>;
-    images: Schema.Attribute.Media<'images' | 'files', true> &
+    images: Schema.Attribute.Media<'images' | 'files' | 'videos', true> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

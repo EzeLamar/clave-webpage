@@ -35,7 +35,8 @@
       "required": true,
       "allowedTypes": [
         "images",
-        "files"
+        "files",
+        "videos"
       ]
     },
     "price": {

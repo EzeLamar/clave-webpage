@@ -177,6 +177,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
                       alt={image.alternativeText}
                       fill
                       className="object-cover"
+                      noShowVideo
                     />
                   </button>
                 );
@@ -186,7 +187,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
             {/* Main image (always visible, centered on tablet) */}
             <div className="flex-1 flex flex-col items-center">
               <div
-                className="relative h-[400px] md:h-[500px] w-full rounded-lg overflow-hidden border border-border cursor-zoom-in"
+                className="relative flex items-center justify-center h-[400px] md:h-[500px] w-full rounded-lg overflow-hidden border border-border cursor-zoom-in"
               >
                 {/* Badge X/Y */}
                 <Badge className="absolute top-4 left-4 z-10 bg-gray-100 text-gray-600 font-semibold px-3 py-1">
@@ -258,6 +259,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
                         alt={image.alternativeText}
                         fill
                         className="object-cover"
+                        noShowVideo
                       />
                     </button>
                   );
