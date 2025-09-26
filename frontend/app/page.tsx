@@ -8,7 +8,6 @@ async function App() {
   const landingPage = await strapiApi.get('/api/landing-page');
   // @ts-expect-error - Strapi API response type is not properly typed
   const blocks = landingPage.data.blocks;
-  console.log(blocks);
 
   
   return (

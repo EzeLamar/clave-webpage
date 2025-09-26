@@ -678,6 +678,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     shipmentDescription: Schema.Attribute.Blocks;
+    shortDescription: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
     sku: Schema.Attribute.UID<'name'>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     stock: Schema.Attribute.Integer &

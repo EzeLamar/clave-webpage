@@ -47,7 +47,6 @@ export default async function RootLayout({
 }>) {
   // @ts-expect-error - Strapi API response type is not properly typed
   const { data: global } = await strapiApi.get('/api/global');
-  console.log("global", global);
   // @ts-expect-error - Strapi API response type is not properly typed
   const { data: products } = await strapiApi.get('/api/products');
   // @ts-expect-error - Strapi API response type is not properly typed

@@ -70,8 +70,6 @@ export function ProductDetails({ }: ProductDetailsProps) {
     setSelectedImageIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
   };
 
-  console.log("Eze", shipmentDescription);
-
   const hasShipmentDescription = (): boolean => {
     if (
       !shipmentDescription ||

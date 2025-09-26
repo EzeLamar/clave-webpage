@@ -136,6 +136,7 @@ export interface LinkProps {
     categories: CategoryProps[];
     brand: BrandProps;
     shipmentDescription?: RootNode[];
+    shortDescription?: string;
   }
 
   export interface CategoryProps {

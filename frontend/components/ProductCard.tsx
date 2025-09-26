@@ -34,7 +34,7 @@ function useMediaQuery(query: string) {
 }
 
 export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
-  const { id, slug, name, images, features, price, discount } = product;
+  const { id, slug, name, images, features, price, discount, shortDescription } = product;
   const [selectedFeature, setSelectedFeature] = useState<null | typeof features[0]>(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
   const handleBadgeClick = useCallback((feature: FeatureProps) => {
@@ -100,6 +100,7 @@ export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
               </Badge>))
           }
         </div>}
+        <p className='text-sm text-muted-foreground overflow-hidden line-clamp-3 mb-2'>{shortDescription}</p>
 
         {/* Feature Description Modal/Drawer */}
         {selectedFeature && (
