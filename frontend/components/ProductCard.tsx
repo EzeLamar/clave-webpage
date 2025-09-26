@@ -3,7 +3,7 @@
 import React from 'react';
 import { ProductProps, FeatureProps } from '@/types/base';
 import { StrapiImage } from './custom/strapi-image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation'
 import { formatCurrency } from '@/lib/currency';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -37,6 +37,7 @@ export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
   const { id, slug, name, images, features, price, discount, shortDescription } = product;
   const [selectedFeature, setSelectedFeature] = useState<null | typeof features[0]>(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const router = useRouter();
   const handleBadgeClick = useCallback((feature: FeatureProps) => {
     setSelectedFeature(feature);
   }, []);
@@ -49,17 +50,16 @@ export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
   return (
     <div
       key={id}
-      className="bg-card rounded-lg overflow-hidden shadow-sm group flex flex-col border border-border h-full"
+      className="bg-card rounded-lg overflow-hidden shadow-sm group flex flex-col border border-border h-full cursor-pointer"
+      onClick={() => router.push(`/${pageSlug}/${slug}`)}
     >
       <div className="relative h-64 overflow-hidden">
-        <Link href={`/${pageSlug}/${slug}`}>
           <StrapiImage
             src={images[0].url || ''}
             alt={images[0].alternativeText}
             fill
             className="object-contain transition-transform duration-300 group-hover:scale-105"
           />
-        </Link>
         {discount > 0 && (
           <Badge variant="destructive" className="absolute top-2 right-2">
             {discount}% OFF
@@ -87,15 +87,16 @@ export const ProductCard = ({ pageSlug, product }: ProductCardProps) => {
             </span>
         </div> */}
 
-        <Link href={`/${pageSlug}/${slug}`} className="group-hover:text-primary transition-colors">
-          <h3 className="font-medium mb-1 line-clamp-1">{name}</h3>
-        </Link>
+          <h3 className="font-medium mb-1 line-clamp-1 group-hover:text-primary transition-colors">{name}</h3>
 
         {<div className="flex flex-wrap gap-1 text-muted-foreground mb-3">
           {
             features.map(feature => (
               <Badge key={feature.slug} variant="outline" className='text-primary border-primary hover:text-primary-foreground hover:bg-primary cursor-pointer'
-                onClick={() => handleBadgeClick(feature)}>
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleBadgeClick(feature);
+                }}>
                 {feature.name}
               </Badge>))
           }
