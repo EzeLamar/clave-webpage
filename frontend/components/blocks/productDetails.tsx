@@ -269,7 +269,7 @@ export function ProductDetails({ }: ProductDetailsProps) {
           {/* Product Info */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold">{name}</h1>
+              <h1 className="text-2xl md:text-3xl">{name}</h1>
 
               {/* <div className="flex items-center gap-2 mt-2">
             <div className="flex">
@@ -333,33 +333,17 @@ export function ProductDetails({ }: ProductDetailsProps) {
                   <span className="sr-only">Agregar a Favoritos</span>
                 </Button>
                 <Button size="icon" variant="outline">
-                  <Share className="h-5 w-5" />
+                  <Share2 className="h-5 w-5" />
                   <span className="sr-only">Compartir Producto</span>
                 </Button>
-
               </div> */}
             </div>
 
-            {/* <div className="bg-accent/50 p-4 rounded-lg space-y-3">
-              <div className="flex items-center gap-2">
-                <Truck className="text-primary h-5 w-5" />
-                <span className="text-sm">
-                  Envío gratis en pedidos superiores a $50
-                </span>
+            {product.shortDescription && (
+              <div className="bg-accent/70 p-4 rounded-lg space-y-3 italic">
+                {product.shortDescription}
               </div>
-              <div className="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary h-5 w-5"><path d="M4.5 6.5v5s0 2.5 3.5 2.5 3.5-2.5 3.5-2.5v-5S11.5 4 8 4s-3.5 2.5-3.5 2.5Z"></path><path d="M4.5 11.5v4s0 2.5 3.5 2.5 3.5-2.5 3.5-2.5v-4"></path><path d="M12.5 6.5v5s0 2.5 3.5 2.5 3.5-2.5 3.5-2.5v-5S19.5 4 16 4s-3.5 2.5-3.5 2.5Z"></path><path d="M12.5 11.5v4s0 2.5 3.5 2.5 3.5-2.5 3.5-2.5v-4"></path></svg>
-                <span className="text-sm">
-                  Pagos seguros con MercadoPago
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary h-5 w-5"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
-                <span className="text-sm">
-                  Devoluciones fáciles en 30 días
-                </span>
-              </div>
-            </div> */}
+            )}
           </div>
 
           {/* Product Details Tabs */}
