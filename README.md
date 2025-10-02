@@ -1,6 +1,35 @@
 # Clave Webpage
 
-This project consists of a modern web application with a Next.js frontend and a Strapi backend.
+## Project Description
+
+Clave Webpage is a modern web platform designed to provide an attractive and flexible experience for both content administrators and end users. The main goal of the site is to serve as a corporate and product catalog website, enabling easy management of articles, products, categories, and informational pages through an intuitive admin panel.
+
+The project architecture is divided into two main parts:
+- **Frontend (Next.js):** Delivers a fast, responsive, and customizable user interface, consuming the backend API to display dynamic content.
+- **Backend (Strapi):** Allows content management via a headless CMS, making it easy to create, edit, and organize the information shown on the website.
+
+### Purpose
+
+The purpose of Clave Webpage is to:
+- Provide a professional digital presence for the company or brand.
+- Enable quick content updates without technical knowledge.
+- Display products, articles, and other relevant information in an attractive and organized way.
+- Facilitate scalability and customization through a decoupled architecture.
+
+---
+
+## Dynamic Blocks Functionality
+
+One of the key features of the frontend is the ability to render pages using **dynamic blocks**. This means administrators can build and modify the structure of pages from the Strapi admin panel by selecting and arranging different types of blocks (such as banners, product lists, articles, testimonials, contact forms, etc.).
+
+- Each block represents a reusable component in the frontend.
+- The backend sends the configuration and content of the blocks via the API.
+- The frontend interprets this configuration and renders the blocks in the specified order and with the provided content.
+- This allows for highly customizable pages without the need to modify the source code.
+
+This functionality provides great flexibility, enabling the site to evolve and adapt to new business needs easily.
+
+---
 
 ## Project Structure
 
